@@ -1,0 +1,116 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import { Award, Heart, Users } from 'lucide-react';
+
+export function About() {
+  return (
+    <section id="about" className="py-20 bg-gradient-to-b from-rose-50 to-white">
+      <div className="container-custom section-padding">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-soft-black mb-6">
+              About <span className="text-gradient">Ivy Beauty Lash</span>
+            </h2>
+            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              Founded with a passion for enhancing natural beauty, Ivy Beauty Lash has become 
+              the premier destination for luxury eyelash extensions and beauty services. 
+              Our expert team combines artistry with precision to create stunning results 
+              that make you feel confident and beautiful.
+            </p>
+            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              We believe that every person deserves to feel their most beautiful self. 
+              That&apos;s why we use only the highest quality products and techniques, 
+              ensuring each treatment is tailored to your unique features and lifestyle.
+            </p>
+
+            {/* Stats */}
+            <div className="grid grid-cols-2 gap-6 mb-8">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-rose-600 mb-2">10+</div>
+                <div className="text-gray-600">Years Experience</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-rose-600 mb-2">5000+</div>
+                <div className="text-gray-600">Happy Clients</div>
+              </div>
+            </div>
+
+            <button className="btn-primary">
+              Meet Our Team
+            </button>
+          </motion.div>
+
+          {/* Image/Visual */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative"
+          >
+            <div className="aspect-square bg-gradient-to-br from-rose-200 to-rose-300 rounded-3xl shadow-2xl"></div>
+            {/* Floating Elements */}
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-white rounded-2xl shadow-lg flex items-center justify-center floating-animation">
+              <Award className="w-12 h-12 text-rose-500" />
+            </div>
+            <div className="absolute -bottom-4 -left-4 w-20 h-20 bg-white rounded-2xl shadow-lg flex items-center justify-center floating-animation" style={{ animationDelay: '1s' }}>
+              <Heart className="w-10 h-10 text-rose-500" />
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Values Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mt-20"
+        >
+          <h3 className="text-3xl font-bold text-center text-soft-black mb-12">
+            Why Choose Ivy Beauty Lash?
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center p-6">
+              <div className="w-16 h-16 bg-gradient-to-br from-rose-400 to-rose-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Award className="w-8 h-8 text-white" />
+              </div>
+              <h4 className="text-xl font-bold text-soft-black mb-3">Expert Technicians</h4>
+              <p className="text-gray-600">
+                Our certified professionals have years of experience and ongoing training
+                in the latest techniques and trends.
+              </p>
+            </div>
+            <div className="text-center p-6">
+              <div className="w-16 h-16 bg-gradient-to-br from-rose-400 to-rose-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Heart className="w-8 h-8 text-white" />
+              </div>
+              <h4 className="text-xl font-bold text-soft-black mb-3">Premium Products</h4>
+              <p className="text-gray-600">
+                We use only the highest quality, hypoallergenic products that are safe
+                and long-lasting for optimal results.
+              </p>
+            </div>
+            <div className="text-center p-6">
+              <div className="w-16 h-16 bg-gradient-to-br from-rose-400 to-rose-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Users className="w-8 h-8 text-white" />
+              </div>
+              <h4 className="text-xl font-bold text-soft-black mb-3">Personalized Care</h4>
+              <p className="text-gray-600">
+                Every treatment is customized to your unique features, preferences,
+                and lifestyle for perfect results.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
