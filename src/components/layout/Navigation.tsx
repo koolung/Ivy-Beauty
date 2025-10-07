@@ -16,10 +16,13 @@ const navigation = [
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+      setScrolled(currentScrollY > 50);
+      setScrollY(currentScrollY);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -27,11 +30,16 @@ export function Navigation() {
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled 
-        ? 'bg-white/90 backdrop-blur-md shadow-lg' 
-        : 'bg-transparent'
-    }`}>
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled 
+          ? 'backdrop-blur-md shadow-lg' 
+          : 'bg-black/10 backdrop-blur-sm'
+      }`}
+      style={scrolled ? {
+        backgroundColor: 'rgba(149, 30, 56, 0.65)'
+      } : undefined}
+    >
       <nav className="container-custom section-padding">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -39,10 +47,27 @@ export function Navigation() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="flex items-center space-x-2"
+            className="flex items-center space-x-2 relative"
           >
-            <div className="text-2xl font-serif font-bold text-gradient">
-              Ivy Beauty Lash
+            <div className="relative w-52 h-14 overflow-hidden">
+              {/* Light logo - shows initially */}
+              <motion.img
+                src="/images/logo/light_rectangle.svg"
+                alt="Ivy Beauty Lash"
+                className="absolute inset-0 w-full h-full object-contain"
+                style={{
+                  opacity: Math.max(0, 1 - (scrollY / 200))
+                }}
+              />
+              {/* Base logo - shows when scrolled */}
+              <motion.img
+                src="/images/logo/base_rectangle.svg"
+                alt="Ivy Beauty Lash"
+                className="absolute inset-0 w-full h-full object-contain"
+                style={{
+                  opacity: Math.min(1, scrollY / 200)
+                }}
+              />
             </div>
           </motion.div>
 
@@ -60,11 +85,31 @@ export function Navigation() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}
-                className="relative text-gray-700 hover:text-rose-600 font-medium transition-colors duration-300 group"
+                className={`relative font-medium transition-colors duration-300 group ${
+                  scrolled 
+                    ? 'text-white' 
+                    : 'text-gray-700'
+                }`}
+                style={scrolled ? {
+                  color: 'white'
+                } : {
+                  color: '#374151'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.color = scrolled ? '#e8b4a0' : '#951e38';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.color = scrolled ? 'white' : '#374151';
+                }}
                 onClick={() => setIsOpen(false)}
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-rose-400 to-rose-500 transition-all duration-300 group-hover:w-full"></span>
+                <span 
+                  className="absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full"
+                  style={{
+                    background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
+                  }}
+                ></span>
               </motion.a>
             ))}
           </motion.div>
@@ -76,7 +121,9 @@ export function Navigation() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="hidden lg:flex items-center space-x-4"
           >
-            <div className="flex items-center space-x-2 text-sm text-gray-600">
+            <div className={`flex items-center space-x-2 text-sm transition-colors duration-300 ${
+              scrolled ? 'text-gray-300' : 'text-gray-600'
+            }`}>
               <Phone className="w-4 h-4" />
               <span>(555) 123-4567</span>
             </div>
@@ -91,7 +138,20 @@ export function Navigation() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-md text-gray-700 hover:text-rose-600 hover:bg-gray-100 transition-colors duration-200"
+            className="lg:hidden p-2 rounded-md transition-colors duration-200"
+            style={scrolled ? {
+              color: 'white'
+            } : {
+              color: '#374151'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.color = scrolled ? '#e8b4a0' : '#951e38';
+              e.target.style.backgroundColor = scrolled ? 'rgba(255,255,255,0.1)' : 'rgba(149,30,56,0.1)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.color = scrolled ? 'white' : '#374151';
+              e.target.style.backgroundColor = 'transparent';
+            }}
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </motion.button>
@@ -115,7 +175,16 @@ export function Navigation() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.05 }}
-                    className="block text-gray-700 hover:text-rose-600 font-medium py-2 transition-colors duration-200"
+                    className="block text-gray-700 font-medium py-2 transition-colors duration-200"
+                    style={{
+                      color: '#374151'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.color = '#951e38';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.color = '#374151';
+                    }}
                     onClick={() => setIsOpen(false)}
                   >
                     {item.name}

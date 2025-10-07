@@ -96,7 +96,9 @@ export function Gallery() {
   };
 
   return (
-    <section id="gallery" className="py-20 bg-gradient-to-b from-white to-rose-50">
+    <section id="gallery" className="py-20" style={{
+      background: 'linear-gradient(to bottom, white, rgba(149, 30, 56, 0.05))'
+    }}>
       <div className="container-custom section-padding">
         {/* Header */}
         <motion.div
@@ -120,11 +122,28 @@ export function Gallery() {
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                  selectedCategory === category
-                    ? 'bg-gradient-to-r from-rose-400 to-rose-500 text-white shadow-lg'
-                    : 'bg-white text-gray-600 hover:bg-rose-50 hover:text-rose-600 border border-gray-200'
-                }`}
+                className="px-6 py-3 rounded-full font-medium transition-all duration-300 border border-gray-200"
+                style={selectedCategory === category ? {
+                  background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)',
+                  color: 'white',
+                  boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+                  borderColor: 'transparent'
+                } : {
+                  background: 'white',
+                  color: '#6b7280'
+                }}
+                onMouseEnter={(e) => {
+                  if (selectedCategory !== category) {
+                    e.target.style.backgroundColor = 'rgba(149, 30, 56, 0.05)';
+                    e.target.style.color = '#951e38';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (selectedCategory !== category) {
+                    e.target.style.backgroundColor = 'white';
+                    e.target.style.color = '#6b7280';
+                  }
+                }}
               >
                 {category}
               </button>
@@ -152,7 +171,10 @@ export function Gallery() {
             >
               <div className="relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
                 <div 
-                  className="aspect-[4/5] bg-gradient-to-br from-rose-200 to-rose-300 relative"
+                  className="aspect-[4/5] relative"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(149, 30, 56, 0.2) 0%, rgba(149, 30, 56, 0.3) 100%)'
+                  }}
                 >
                   {/* Placeholder for image */}
                   <div className="absolute inset-0 flex items-center justify-center text-white font-medium">
@@ -235,7 +257,10 @@ export function Gallery() {
 
             {/* Image */}
             <div 
-              className="w-full h-full max-w-3xl max-h-[80vh] bg-gradient-to-br from-rose-200 to-rose-300 rounded-2xl flex items-center justify-center text-white font-medium text-xl"
+              className="w-full h-full max-w-3xl max-h-[80vh] rounded-2xl flex items-center justify-center text-white font-medium text-xl"
+              style={{
+                background: 'linear-gradient(135deg, rgba(149, 30, 56, 0.2) 0%, rgba(149, 30, 56, 0.3) 100%)'
+              }}
               onClick={(e) => e.stopPropagation()}
             >
               {filteredImages.find(img => img.id === selectedImage)?.alt}

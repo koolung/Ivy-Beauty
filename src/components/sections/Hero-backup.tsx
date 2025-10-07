@@ -1,70 +1,34 @@
 'use client';
 
-import { Suspense, useState, useEffect } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Environment } from '@react-three/drei';
+import { useRef, Suspense, useState, useEffect } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { OrbitControls, Sphere, MeshDistortMaterial, Environment } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import { ChevronDown, Sparkles, Star } from 'lucide-react';
+import * as THREE from 'three';
 
-// Custom hook to track scroll position
-function useScrollPosition() {
-  const [scrollY, setScrollY] = useState(0);
+function AnimatedSphere() {
+  const sphereRef = useRef<THREE.Mesh>(null);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  return scrollY;
-}
-
-// Background image component with scroll effects
-function ScrollingBackgroundImage() {
-  const scrollY = useScrollPosition();
-  const [isMobile, setIsMobile] = useState(false);
-  
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-  
-  // Calculate zoom scale - start with more zoom for closer view
-  const baseScale = 2.2;
-  const scale = baseScale + (scrollY * 0.0003);
-  
-  // Calculate opacity (starts faint at 0.3, increases to 0.8)
-  const opacity = Math.min(0.3 + (scrollY * 0.001), 0.8);
+  useFrame((state) => {
+    if (sphereRef.current) {
+      sphereRef.current.rotation.x = Math.sin(state.clock.elapsedTime) * 0.2;
+      sphereRef.current.rotation.y += 0.01;
+      sphereRef.current.position.y = Math.sin(state.clock.elapsedTime) * 0.1;
+    }
+  });
 
   return (
-    <div 
-      className="background-image-container absolute inset-0 w-full h-screen transition-all duration-300 ease-out"
-      style={{
-        backgroundImage: 'url(/images/hero-bg.png)',
-        backgroundSize: isMobile ? 'cover' : 'contain',
-        backgroundPosition: 'center top',
-        backgroundRepeat: 'no-repeat',
-        transform: `scale(${Math.min(scale, 1.2)})`,
-        opacity: opacity,
-        transformOrigin: 'center top',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        margin: 0,
-        padding: 0,
-        maxWidth: '100vw',
-        overflow: 'hidden',
-      }}
-    />
+    <Sphere ref={sphereRef} args={[1, 100, 200]} scale={2.5}>
+      <MeshDistortMaterial
+        color="#e8b4a0"
+        attach="material"
+        distort={0.3}
+        speed={1.5}
+        roughness={0.2}
+        metalness={0.8}
+      />
+    </Sphere>
   );
 }
 
@@ -74,6 +38,7 @@ function Scene() {
       <ambientLight intensity={0.5} />
       <directionalLight position={[10, 10, 5]} intensity={1} />
       <pointLight position={[-10, -10, -10]} color="#f4e4e0" />
+      <AnimatedSphere />
       <Environment preset="sunset" />
       <OrbitControls enableZoom={false} enablePan={false} />
     </>
@@ -83,15 +48,15 @@ function Scene() {
 // Fixed positions for floating elements to avoid hydration issues
 const floatingElements = [
   { id: 1, left: 10, top: 20, delay: 0 },
-  { id: 2, left: 80, top: 15, delay: 0.5 }, // reduced from 85 to 80
+  { id: 2, left: 85, top: 15, delay: 0.5 },
   { id: 3, left: 25, top: 65, delay: 1 },
   { id: 4, left: 75, top: 80, delay: 1.5 },
-  { id: 5, left: 85, top: 45, delay: 2 }, // reduced from 90 to 85
+  { id: 5, left: 90, top: 45, delay: 2 },
   { id: 6, left: 15, top: 90, delay: 2.5 },
   { id: 7, left: 60, top: 25, delay: 3 },
   { id: 8, left: 40, top: 75, delay: 3.5 },
-  { id: 9, left: 88, top: 60, delay: 4 }, // reduced from 95 to 88
-  { id: 10, left: 8, top: 40, delay: 4.5 }, // increased from 5 to 8
+  { id: 9, left: 95, top: 60, delay: 4 },
+  { id: 10, left: 5, top: 40, delay: 4.5 },
   { id: 11, left: 70, top: 10, delay: 0.2 },
   { id: 12, left: 30, top: 85, delay: 1.2 },
   { id: 13, left: 80, top: 35, delay: 2.2 },
@@ -111,7 +76,7 @@ function FloatingElements() {
   }
 
   return (
-    <div className="floating-elements-container absolute inset-0 overflow-hidden pointer-events-none">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {floatingElements.map((element) => (
         <motion.div
           key={element.id}
@@ -133,7 +98,7 @@ function FloatingElements() {
             top: `${element.top}%`,
           }}
         >
-          <Sparkles className="w-4 h-4" style={{ color: 'rgba(149, 30, 56, 0.7)' }} />
+          <Sparkles className="w-4 h-4 text-rose-300" />
         </motion.div>
       ))}
     </div>
@@ -142,13 +107,7 @@ function FloatingElements() {
 
 export function Hero() {
   return (
-    <section 
-      id="home" 
-      className="hero-section relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-warm-white via-dusty-pink to-rose-100"
-    >
-      {/* Background Image with Scroll Effects */}
-      <ScrollingBackgroundImage />
-      
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-warm-white via-dusty-pink to-rose-100">
       {/* Three.js Background */}
       <div className="absolute inset-0 w-full h-full">
         <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
@@ -172,9 +131,14 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mb-20"
+          className="mb-6"
         >
-
+          <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 mb-8">
+            <Star className="w-5 h-5 text-yellow-400 fill-current" />
+            <span className="text-sm font-medium text-gray-700">
+              Award-Winning Beauty Salon
+            </span>
+          </div>
         </motion.div>
 
         <motion.h1 
@@ -225,15 +189,15 @@ export function Hero() {
           className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto glass-card"
         >
           <div className="text-center">
-            <div className="text-3xl font-bold mb-2" style={{ color: '#951e38' }}>5000+</div>
+            <div className="text-3xl font-bold text-rose-600 mb-2">5000+</div>
             <div className="text-gray-600">Happy Clients</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold mb-2" style={{ color: '#951e38' }}>10+</div>
+            <div className="text-3xl font-bold text-rose-600 mb-2">10+</div>
             <div className="text-gray-600">Years Experience</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold mb-2" style={{ color: '#951e38' }}>★ 4.9</div>
+            <div className="text-3xl font-bold text-rose-600 mb-2">★ 4.9</div>
             <div className="text-gray-600">Average Rating</div>
           </div>
         </motion.div>

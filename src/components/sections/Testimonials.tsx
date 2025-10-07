@@ -75,7 +75,9 @@ export function Testimonials() {
   };
 
   return (
-    <section id="reviews" className="py-20 bg-gradient-to-b from-rose-50 to-white">
+    <section id="reviews" className="py-20" style={{
+      background: 'linear-gradient(to bottom, rgba(149, 30, 56, 0.05), white)'
+    }}>
       <div className="container-custom section-padding">
         {/* Header */}
         <motion.div
@@ -114,7 +116,12 @@ export function Testimonials() {
                 >
                   <div className="glass-card max-w-4xl mx-auto text-center relative">
                     {/* Quote Icon */}
-                    <div className="absolute top-6 left-6 w-12 h-12 bg-gradient-to-br from-rose-400 to-rose-500 rounded-full flex items-center justify-center">
+                    <div 
+                      className="absolute top-6 left-6 w-12 h-12 rounded-full flex items-center justify-center"
+                      style={{
+                        background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
+                      }}
+                    >
                       <Quote className="w-6 h-6 text-white" />
                     </div>
 
@@ -132,7 +139,12 @@ export function Testimonials() {
 
                       {/* Client Info */}
                       <div className="flex items-center justify-center space-x-4">
-                        <div className="w-16 h-16 bg-gradient-to-br from-rose-200 to-rose-300 rounded-full flex items-center justify-center text-white font-medium">
+                        <div 
+                          className="w-16 h-16 rounded-full flex items-center justify-center text-white font-medium"
+                          style={{
+                            background: 'linear-gradient(135deg, rgba(149, 30, 56, 0.2) 0%, rgba(149, 30, 56, 0.3) 100%)'
+                          }}
+                        >
                           {testimonial.name.split(' ').map(n => n[0]).join('')}
                         </div>
                         <div className="text-left">
@@ -157,11 +169,23 @@ export function Testimonials() {
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentIndex
-                    ? 'bg-gradient-to-r from-rose-400 to-rose-500 w-8'
-                    : 'bg-gray-300 hover:bg-gray-400'
-                }`}
+                className="w-3 h-3 rounded-full transition-all duration-300"
+                style={index === currentIndex ? {
+                  width: '2rem',
+                  background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
+                } : {
+                  backgroundColor: '#d1d5db'
+                }}
+                onMouseEnter={(e) => {
+                  if (index !== currentIndex) {
+                    e.target.style.backgroundColor = '#9ca3af';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (index !== currentIndex) {
+                    e.target.style.backgroundColor = '#d1d5db';
+                  }
+                }}
               />
             ))}
           </div>
@@ -176,19 +200,19 @@ export function Testimonials() {
           className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-16 max-w-4xl mx-auto"
         >
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-rose-600 mb-2">4.9★</div>
+            <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: '#951e38' }}>4.9★</div>
             <div className="text-gray-600">Average Rating</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-rose-600 mb-2">500+</div>
+            <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: '#951e38' }}>500+</div>
             <div className="text-gray-600">5-Star Reviews</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-rose-600 mb-2">98%</div>
+            <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: '#951e38' }}>98%</div>
             <div className="text-gray-600">Client Retention</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-rose-600 mb-2">5000+</div>
+            <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: '#951e38' }}>5000+</div>
             <div className="text-gray-600">Happy Clients</div>
           </div>
         </motion.div>

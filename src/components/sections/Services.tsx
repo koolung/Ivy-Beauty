@@ -1,7 +1,8 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { Eye, Sparkles, Heart, Clock, Star, Users } from 'lucide-react';
+import { motion, useMotionValue, useTransform, PanInfo } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { Eye, Sparkles, Heart, Clock, Star, Users, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const services = [
   {
@@ -55,8 +56,77 @@ const services = [
 ];
 
 export function Services() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if mobile on mount and resize
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const nextSlide = () => {
+    if (currentSlide < services.length - 1) {
+      setCurrentSlide(currentSlide + 1);
+    }
+  };
+
+  const prevSlide = () => {
+    if (currentSlide > 0) {
+      setCurrentSlide(currentSlide - 1);
+    }
+  };
+
+  const handleDragEnd = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+    setIsDragging(false);
+    const swipeThreshold = 75;
+    const velocityThreshold = 300;
+    
+    // Determine direction based on offset and velocity
+    if (info.offset.x > swipeThreshold || info.velocity.x > velocityThreshold) {
+      // Swiping right - go to previous slide
+      if (currentSlide > 0) {
+        setCurrentSlide(currentSlide - 1);
+      }
+    } else if (info.offset.x < -swipeThreshold || info.velocity.x < -velocityThreshold) {
+      // Swiping left - go to next slide
+      if (currentSlide < services.length - 1) {
+        setCurrentSlide(currentSlide + 1);
+      }
+    }
+  };
+
+  const handleDragStart = () => {
+    setIsDragging(true);
+  };
+
+  const goToSlide = (index: number) => {
+    if (index >= 0 && index < services.length) {
+      setCurrentSlide(index);
+    }
+  };
+
+  // Auto-advance carousel on mobile (surprise element)
+  useEffect(() => {
+    if (isMobile && !isDragging) {
+      const timer = setInterval(() => {
+        setCurrentSlide((prev) => {
+          // Reset to first slide when reaching the end
+          return prev >= services.length - 1 ? 0 : prev + 1;
+        });
+      }, 8000); // Auto-advance every 8 seconds
+      
+      return () => clearInterval(timer);
+    }
+  }, [isDragging, isMobile]);
+
   return (
-    <section id="services" className="py-20 bg-gradient-to-b from-white to-rose-50">
+    <section id="services" className="py-20" style={{
+      background: 'linear-gradient(to bottom, white, rgba(149, 30, 56, 0.05))'
+    }}>
       <div className="container-custom section-padding">
         {/* Header */}
         <motion.div
@@ -75,8 +145,8 @@ export function Services() {
           </p>
         </motion.div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Desktop Grid */}
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
@@ -90,18 +160,28 @@ export function Services() {
               >
                 <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden">
                   {/* Background Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-rose-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div 
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(149, 30, 56, 0.05) 0%, transparent 100%)'
+                    }}
+                  />
                   
                   {/* Icon */}
                   <div className="relative z-10 mb-6">
-                    <div className="w-16 h-16 bg-gradient-to-br from-rose-400 to-rose-500 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <div 
+                      className="w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
+                      style={{
+                        background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
+                      }}
+                    >
                       <IconComponent className="w-8 h-8 text-white" />
                     </div>
                   </div>
 
                   {/* Content */}
                   <div className="relative z-10">
-                    <h3 className="text-2xl font-bold text-soft-black mb-3 group-hover:text-rose-600 transition-colors duration-300">
+                    <h3 className="text-2xl font-bold text-soft-black mb-3 group-hover:text-[#951e38] transition-colors duration-300">
                       {service.title}
                     </h3>
                     <p className="text-gray-600 mb-4 leading-relaxed">
@@ -118,10 +198,15 @@ export function Services() {
 
                     {/* Price & Book Button */}
                     <div className="flex items-center justify-between">
-                      <div className="text-2xl font-bold text-rose-600">
+                      <div className="text-2xl font-bold" style={{ color: '#951e38' }}>
                         {service.price}
                       </div>
-                      <button className="bg-gradient-to-r from-rose-400 to-rose-500 text-white px-6 py-3 rounded-full font-medium hover:from-rose-500 hover:to-rose-600 transform hover:scale-105 transition-all duration-300 shadow-lg">
+                      <button 
+                        className="text-white px-6 py-3 rounded-full font-medium transform hover:scale-105 transition-all duration-300 shadow-lg"
+                        style={{
+                          background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
+                        }}
+                      >
                         Book Now
                       </button>
                     </div>
@@ -129,12 +214,242 @@ export function Services() {
 
                   {/* Decorative Elements */}
                   <div className="absolute top-4 right-4 opacity-20 group-hover:opacity-40 transition-opacity duration-500">
-                    <Sparkles className="w-6 h-6 text-rose-400" />
+                    <Sparkles className="w-6 h-6" style={{ color: 'rgba(149, 30, 56, 0.7)' }} />
                   </div>
                 </div>
               </motion.div>
             );
           })}
+        </div>
+
+        {/* Mobile Carousel */}
+        <div className="md:hidden relative">
+          {/* Carousel Container */}
+          <div className="overflow-hidden rounded-3xl mx-2">
+            <motion.div
+              drag="x"
+              dragConstraints={{ left: -200, right: 200 }}
+              dragElastic={0.2}
+              dragMomentum={false}
+              onDragStart={handleDragStart}
+              onDragEnd={handleDragEnd}
+              animate={{ 
+                x: -currentSlide * 100 + "%"
+              }}
+              transition={{ 
+                type: "spring", 
+                stiffness: 500, 
+                damping: 50,
+                duration: 0.4
+              }}
+              className="flex"
+            >
+              {services.map((service, index) => {
+                const IconComponent = service.icon;
+                return (
+                  <motion.div
+                    key={service.title}
+                    className="min-w-full px-2"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ 
+                      opacity: currentSlide === index ? 1 : 0.8,
+                      scale: currentSlide === index ? 1 : 0.95
+                    }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <div className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 mx-2 relative overflow-hidden min-h-[500px] flex flex-col justify-between">
+                      {/* Animated background */}
+                      <motion.div 
+                        className="absolute inset-0"
+                        style={{
+                          background: 'linear-gradient(135deg, rgba(149, 30, 56, 0.08) 0%, transparent 100%)'
+                        }}
+                        animate={{
+                          opacity: currentSlide === index ? 1 : 0
+                        }}
+                        transition={{ duration: 0.8 }}
+                      />
+                      
+                      {/* Floating particles effect (surprise element) */}
+                      {currentSlide === index && (
+                        <>
+                          {[...Array(3)].map((_, i) => {
+                            // Use deterministic positions based on index to avoid hydration issues
+                            const positions = [
+                              { startX: 50, startY: 100, endX: 150, endY: 200 },
+                              { startX: 200, startY: 50, endX: 100, endY: 300 },
+                              { startX: 120, startY: 250, endX: 250, endY: 150 }
+                            ];
+                            const pos = positions[i];
+                            
+                            return (
+                              <motion.div
+                                key={i}
+                                className="absolute w-2 h-2 rounded-full bg-[#951e38]/30"
+                                initial={{ x: pos.startX, y: pos.startY, opacity: 0 }}
+                                animate={{
+                                  x: [pos.startX, pos.endX, pos.startX],
+                                  y: [pos.startY, pos.endY, pos.startY],
+                                  opacity: [0, 1, 0]
+                                }}
+                                transition={{
+                                  duration: 4 + i * 0.5,
+                                  repeat: Infinity,
+                                  delay: i * 0.8,
+                                  ease: "easeInOut"
+                                }}
+                              />
+                            );
+                          })}
+                        </>
+                      )}
+                      
+                      <div className="relative z-10">
+                        {/* Icon with pulse animation */}
+                        <motion.div 
+                          className="w-24 h-24 rounded-3xl flex items-center justify-center mb-6 mx-auto shadow-lg"
+                          style={{
+                            background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
+                          }}
+                          animate={{
+                            scale: currentSlide === index ? [1, 1.05, 1] : 1,
+                            rotate: currentSlide === index ? [0, 5, -5, 0] : 0
+                          }}
+                          transition={{ 
+                            duration: 3, 
+                            repeat: currentSlide === index ? Infinity : 0,
+                            ease: "easeInOut"
+                          }}
+                        >
+                          <IconComponent className="w-12 h-12 text-white" />
+                        </motion.div>
+                        
+                        <motion.h3 
+                          className="text-3xl font-bold mb-4 text-center text-gray-800"
+                          animate={{
+                            color: currentSlide === index ? "#951e38" : "#1f2937"
+                          }}
+                          transition={{ duration: 0.5 }}
+                        >
+                          {service.title}
+                        </motion.h3>
+                        
+                        <p className="text-gray-600 mb-6 leading-relaxed text-center text-lg">
+                          {service.description}
+                        </p>
+                        
+                        <div className="flex justify-center items-center mb-8 space-x-6">
+                          <motion.span 
+                            className="text-4xl font-bold"
+                            style={{ color: '#951e38' }}
+                            animate={{
+                              scale: currentSlide === index ? [1, 1.1, 1] : 1
+                            }}
+                            transition={{ 
+                              duration: 2, 
+                              repeat: currentSlide === index ? Infinity : 0 
+                            }}
+                          >
+                            {service.price}
+                          </motion.span>
+                          <span className="text-sm text-gray-500 flex items-center bg-gray-50 px-4 py-2 rounded-full shadow-sm">
+                            <Clock className="w-4 h-4 mr-2" />
+                            {service.duration}
+                          </span>
+                        </div>
+                        
+                        <motion.button 
+                          className="w-full py-4 text-white rounded-2xl font-semibold text-lg shadow-xl"
+                          style={{
+                            background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
+                          }}
+                          whileTap={{ scale: 0.95 }}
+                          animate={{
+                            boxShadow: currentSlide === index ? 
+                              ["0 15px 35px rgba(149, 30, 56, 0.3)", "0 20px 45px rgba(149, 30, 56, 0.4)", "0 15px 35px rgba(149, 30, 56, 0.3)"] :
+                              "0 10px 25px rgba(149, 30, 56, 0.2)"
+                          }}
+                          transition={{ 
+                            duration: 2.5, 
+                            repeat: currentSlide === index ? Infinity : 0 
+                          }}
+                        >
+                          Book Now
+                        </motion.button>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
+          </div>
+
+          {/* Navigation Arrows */}
+          <motion.button 
+            onClick={prevSlide}
+            className="absolute left-0 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/95 backdrop-blur-sm rounded-full shadow-xl flex items-center justify-center text-[#951e38] hover:bg-[#951e38] hover:text-white transition-all duration-300 z-20"
+            disabled={currentSlide === 0}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            animate={{
+              x: currentSlide === 0 ? -20 : 0,
+              opacity: currentSlide === 0 ? 0.5 : 1
+            }}
+          >
+            <ChevronLeft className="w-8 h-8" />
+          </motion.button>
+          
+          <motion.button 
+            onClick={nextSlide}
+            className="absolute right-0 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/95 backdrop-blur-sm rounded-full shadow-xl flex items-center justify-center text-[#951e38] hover:bg-[#951e38] hover:text-white transition-all duration-300 z-20"
+            disabled={currentSlide === services.length - 1}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            animate={{
+              x: currentSlide === services.length - 1 ? 20 : 0,
+              opacity: currentSlide === services.length - 1 ? 0.5 : 1
+            }}
+          >
+            <ChevronRight className="w-8 h-8" />
+          </motion.button>
+
+          {/* Enhanced Pagination Dots */}
+          <div className="flex justify-center space-x-3 mt-8">
+            {services.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className="relative group"
+              >
+                <motion.div
+                  className="w-4 h-4 rounded-full transition-all duration-300"
+                  animate={{
+                    backgroundColor: currentSlide === index ? "#951e38" : "#d1d5db",
+                    scale: currentSlide === index ? 1.3 : 1
+                  }}
+                  whileHover={{ scale: 1.2 }}
+                  transition={{ duration: 0.3 }}
+                />
+                {currentSlide === index && (
+                  <motion.div
+                    className="absolute inset-0 w-4 h-4 rounded-full border-2 border-[#951e38]"
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ 
+                      scale: 2, 
+                      opacity: [0, 0.8, 0],
+                    }}
+                    transition={{ 
+                      duration: 2, 
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+                )}
+              </button>
+            ))}
+          </div>
+
+
         </div>
 
         {/* CTA Section */}

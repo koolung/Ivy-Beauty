@@ -21,25 +21,78 @@
   --font-playfair: 'Playfair Display', serif;
   
   /* Brand Colors */
-  --rose-gold: #e8b4a0;
+  --primary-burgundy: #951e38;
+  --primary-burgundy-light: #b22a47;
+  --primary-burgundy-dark: #7a1a2e;
   --warm-white: #fefdf8;
   --soft-black: #1a1a1a;
   --sage-green: #a8b5a3;
   --dusty-pink: #f4e4e0;
   
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #e8b4a0 0%, #d4a574 100%);
+  --gradient-primary: linear-gradient(135deg, #951e38 0%, #b22a47 100%);
   --gradient-secondary: linear-gradient(135deg, #f4e4e0 0%, #a8b5a3 100%);
 }
 
 @layer base {
   * {
     @apply border-gray-200;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  #__next, 
+  main {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  /* Prevent horizontal scrolling on mobile */
+  * {
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 768px) {
+    body, html {
+      overflow-x: hidden !important;
+      width: 100% !important;
+      max-width: 100vw !important;
+    }
+    
+    /* Only apply overflow hidden to main layout containers */
+    section {
+      max-width: 100vw;
+    }
+    
+    /* Prevent specific problematic elements from causing overflow */
+    .hero-section,
+    .floating-elements-container,
+    .background-image-container {
+      overflow-x: hidden;
+      max-width: 100vw;
+    }
   }
   
   body {
     @apply bg-neutral-50 text-gray-900;
     font-feature-settings: "rlig" 1, "calt" 1;
+    margin: 0;
+    padding: 0;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+  
+  body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
   }
 
   html {
@@ -56,11 +109,12 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-rose-300 rounded-full;
+    background-color: rgba(149, 30, 56, 0.6);
+    border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-rose-400;
+    background-color: #951e38;
   }
 }
 
@@ -81,11 +135,23 @@
   }
 
   .btn-primary {
-    @apply bg-gradient-to-r from-rose-400 to-rose-500 text-white px-8 py-4 rounded-full font-medium hover:from-rose-500 hover:to-rose-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl;
+    @apply text-white px-8 py-4 rounded-full font-medium transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl;
+    background: linear-gradient(135deg, #951e38 0%, #b22a47 100%);
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #7a1a2e 0%, #951e38 100%);
   }
 
   .btn-secondary {
-    @apply border-2 border-rose-400 text-rose-600 px-8 py-4 rounded-full font-medium hover:bg-rose-400 hover:text-white transform hover:scale-105 transition-all duration-300;
+    @apply px-8 py-4 rounded-full font-medium transform hover:scale-105 transition-all duration-300;
+    border: 2px solid #951e38;
+    color: #951e38;
+  }
+
+  .btn-secondary:hover {
+    background-color: #951e38;
+    color: white;
   }
 
   .glass-card {

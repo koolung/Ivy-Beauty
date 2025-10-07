@@ -35,7 +35,9 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-white to-rose-50">
+    <section id="contact" className="py-20" style={{
+      background: 'linear-gradient(to bottom, white, rgba(149, 30, 56, 0.05))'
+    }}>
       <div className="container-custom section-padding">
         {/* Header */}
         <motion.div
@@ -77,8 +79,16 @@ export function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-2xl border border-gray-200 focus:border-rose-400 focus:ring-2 focus:ring-rose-100 transition-colors duration-200 bg-white/50"
+                    className="w-full px-4 py-3 rounded-2xl border border-gray-200 transition-colors duration-200 bg-white/50"
                     placeholder="Your name"
+                    onFocus={(e) => {
+                      e.target.style.borderColor = '#951e38';
+                      e.target.style.outline = '2px solid rgba(149, 30, 56, 0.1)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = '#d1d5db';
+                      e.target.style.outline = 'none';
+                    }}
                   />
                 </div>
                 <div>
@@ -174,7 +184,12 @@ export function Contact() {
               <h3 className="text-2xl font-bold text-soft-black mb-6">Contact Information</h3>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-rose-400 to-rose-500 rounded-2xl flex items-center justify-center flex-shrink-0">
+                  <div 
+                    className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0"
+                    style={{
+                      background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
+                    }}
+                  >
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -188,7 +203,12 @@ export function Contact() {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-rose-400 to-rose-500 rounded-2xl flex items-center justify-center flex-shrink-0">
+                  <div 
+                    className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0"
+                    style={{
+                      background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
+                    }}
+                  >
                     <Phone className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -198,7 +218,12 @@ export function Contact() {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-rose-400 to-rose-500 rounded-2xl flex items-center justify-center flex-shrink-0">
+                  <div 
+                    className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0"
+                    style={{
+                      background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
+                    }}
+                  >
                     <Mail className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -234,13 +259,19 @@ export function Contact() {
               <div className="flex space-x-4">
                 <a
                   href="#"
-                  className="w-12 h-12 bg-gradient-to-br from-rose-400 to-rose-500 rounded-2xl flex items-center justify-center text-white hover:from-rose-500 hover:to-rose-600 transition-colors duration-200"
+                  className="w-12 h-12 rounded-2xl flex items-center justify-center text-white transition-colors duration-200"
+                  style={{
+                    background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
+                  }}
                 >
                   <Instagram className="w-6 h-6" />
                 </a>
                 <a
                   href="#"
-                  className="w-12 h-12 bg-gradient-to-br from-rose-400 to-rose-500 rounded-2xl flex items-center justify-center text-white hover:from-rose-500 hover:to-rose-600 transition-colors duration-200"
+                  className="w-12 h-12 rounded-2xl flex items-center justify-center text-white transition-colors duration-200"
+                  style={{
+                    background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
+                  }}
                 >
                   <Facebook className="w-6 h-6" />
                 </a>

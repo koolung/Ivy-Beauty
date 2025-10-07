@@ -29,7 +29,13 @@ const navigation = {
 
 export function Footer() {
   return (
-    <footer className="bg-gradient-to-b from-rose-50 to-white border-t border-rose-100">
+    <footer 
+      className="border-t"
+      style={{
+        background: 'linear-gradient(to bottom, rgba(149, 30, 56, 0.05), white)',
+        borderColor: 'rgba(149, 30, 56, 0.1)'
+      }}
+    >
       <div className="container-custom section-padding">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 py-16">
@@ -52,15 +58,15 @@ export function Footer() {
             {/* Contact Info */}
             <div className="space-y-3 mb-6">
               <div className="flex items-center space-x-3 text-gray-600">
-                <MapPin className="w-5 h-5 text-rose-500" />
+                <MapPin className="w-5 h-5" style={{ color: '#951e38' }} />
                 <span>123 Beauty Lane, Suite 456, Beverly Hills, CA 90210</span>
               </div>
               <div className="flex items-center space-x-3 text-gray-600">
-                <Phone className="w-5 h-5 text-rose-500" />
+                <Phone className="w-5 h-5" style={{ color: '#951e38' }} />
                 <span>(555) 123-4567</span>
               </div>
               <div className="flex items-center space-x-3 text-gray-600">
-                <Mail className="w-5 h-5 text-rose-500" />
+                <Mail className="w-5 h-5" style={{ color: '#951e38' }} />
                 <span>hello@ivybeauty.com</span>
               </div>
             </div>
@@ -69,19 +75,46 @@ export function Footer() {
             <div className="flex space-x-4">
               <a
                 href="#"
-                className="w-10 h-10 bg-gradient-to-br from-rose-400 to-rose-500 rounded-xl flex items-center justify-center text-white hover:from-rose-500 hover:to-rose-600 transition-colors duration-200"
+                className="w-10 h-10 rounded-xl flex items-center justify-center text-white transition-colors duration-200"
+                style={{
+                  background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.background = 'linear-gradient(135deg, #7a1a2e 0%, #951e38 100%)';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.background = 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)';
+                }}
               >
                 <Instagram className="w-5 h-5" />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 bg-gradient-to-br from-rose-400 to-rose-500 rounded-xl flex items-center justify-center text-white hover:from-rose-500 hover:to-rose-600 transition-colors duration-200"
+                className="w-10 h-10 rounded-xl flex items-center justify-center text-white transition-colors duration-200"
+                style={{
+                  background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.background = 'linear-gradient(135deg, #7a1a2e 0%, #951e38 100%)';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.background = 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)';
+                }}
               >
                 <Facebook className="w-5 h-5" />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 bg-gradient-to-br from-rose-400 to-rose-500 rounded-xl flex items-center justify-center text-white hover:from-rose-500 hover:to-rose-600 transition-colors duration-200"
+                className="w-10 h-10 rounded-xl flex items-center justify-center text-white transition-colors duration-200"
+                style={{
+                  background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.background = 'linear-gradient(135deg, #7a1a2e 0%, #951e38 100%)';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.background = 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)';
+                }}
               >
                 <MessageCircle className="w-5 h-5" />
               </a>
@@ -174,9 +207,25 @@ export function Footer() {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-2xl border border-gray-200 focus:border-rose-400 focus:ring-2 focus:ring-rose-100 transition-colors duration-200"
+                className="flex-1 px-4 py-3 rounded-2xl border border-gray-200 transition-colors duration-200"
+                style={{
+                  focusBorderColor: '#951e38'
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = '#951e38';
+                  e.target.style.outline = '2px solid rgba(149, 30, 56, 0.1)';
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = '#d1d5db';
+                  e.target.style.outline = 'none';
+                }}
               />
-              <button className="bg-gradient-to-r from-rose-400 to-rose-500 text-white px-8 py-3 rounded-2xl font-medium hover:from-rose-500 hover:to-rose-600 transition-colors duration-200 whitespace-nowrap">
+              <button 
+                className="text-white px-8 py-3 rounded-2xl font-medium transition-colors duration-200 whitespace-nowrap"
+                style={{
+                  background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
+                }}
+              >
                 Subscribe
               </button>
             </div>
@@ -208,7 +257,7 @@ export function Footer() {
             </div>
             <div className="flex items-center space-x-1 text-gray-600 text-sm">
               <span>Made with</span>
-              <Heart className="w-4 h-4 text-rose-500 fill-current" />
+              <Heart className="w-4 h-4 fill-current" style={{ color: '#951e38' }} />
               <span>by Ivy Beauty Lash Team</span>
             </div>
           </div>
