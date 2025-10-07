@@ -4,7 +4,7 @@ import { Suspense, useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Environment } from '@react-three/drei';
 import { motion } from 'framer-motion';
-import { ChevronDown, Sparkles, Star } from 'lucide-react';
+import { ChevronDown, Sparkles } from 'lucide-react';
 
 // Custom hook to track scroll position
 function useScrollPosition() {

@@ -109,7 +109,7 @@ export function Testimonials() {
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
-              {testimonials.map((testimonial, index) => (
+              {testimonials.map((testimonial) => (
                 <div
                   key={testimonial.id}
                   className="w-full flex-shrink-0 px-8 py-12"
@@ -178,12 +178,12 @@ export function Testimonials() {
                 }}
                 onMouseEnter={(e) => {
                   if (index !== currentIndex) {
-                    e.target.style.backgroundColor = '#9ca3af';
+                    (e.target as HTMLElement).style.backgroundColor = '#9ca3af';
                   }
                 }}
                 onMouseLeave={(e) => {
                   if (index !== currentIndex) {
-                    e.target.style.backgroundColor = '#d1d5db';
+                    (e.target as HTMLElement).style.backgroundColor = '#d1d5db';
                   }
                 }}
               />

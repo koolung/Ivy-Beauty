@@ -96,10 +96,10 @@ export function Navigation() {
                   color: '#374151'
                 }}
                 onMouseEnter={(e) => {
-                  e.target.style.color = scrolled ? '#e8b4a0' : '#951e38';
+                  (e.target as HTMLElement).style.color = scrolled ? '#e8b4a0' : '#951e38';
                 }}
                 onMouseLeave={(e) => {
-                  e.target.style.color = scrolled ? 'white' : '#374151';
+                  (e.target as HTMLElement).style.color = scrolled ? 'white' : '#374151';
                 }}
                 onClick={() => setIsOpen(false)}
               >
@@ -145,12 +145,12 @@ export function Navigation() {
               color: '#374151'
             }}
             onMouseEnter={(e) => {
-              e.target.style.color = scrolled ? '#e8b4a0' : '#951e38';
-              e.target.style.backgroundColor = scrolled ? 'rgba(255,255,255,0.1)' : 'rgba(149,30,56,0.1)';
+              (e.target as HTMLElement).style.color = scrolled ? '#e8b4a0' : '#951e38';
+              (e.target as HTMLElement).style.backgroundColor = scrolled ? 'rgba(255,255,255,0.1)' : 'rgba(149,30,56,0.1)';
             }}
             onMouseLeave={(e) => {
-              e.target.style.color = scrolled ? 'white' : '#374151';
-              e.target.style.backgroundColor = 'transparent';
+              (e.target as HTMLElement).style.color = scrolled ? 'white' : '#374151';
+              (e.target as HTMLElement).style.backgroundColor = 'transparent';
             }}
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -180,10 +180,10 @@ export function Navigation() {
                       color: '#374151'
                     }}
                     onMouseEnter={(e) => {
-                      e.target.style.color = '#951e38';
+                      (e.target as HTMLElement).style.color = '#951e38';
                     }}
                     onMouseLeave={(e) => {
-                      e.target.style.color = '#374151';
+                      (e.target as HTMLElement).style.color = '#374151';
                     }}
                     onClick={() => setIsOpen(false)}
                   >

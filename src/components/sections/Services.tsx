@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useMotionValue, useTransform, PanInfo } from 'framer-motion';
+import { motion, PanInfo } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { Eye, Sparkles, Heart, Clock, Star, Users, ChevronLeft, ChevronRight } from 'lucide-react';
 

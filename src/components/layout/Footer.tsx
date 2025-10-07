@@ -80,10 +80,10 @@ export function Footer() {
                   background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
                 }}
                 onMouseEnter={(e) => {
-                  e.target.style.background = 'linear-gradient(135deg, #7a1a2e 0%, #951e38 100%)';
+                  (e.target as HTMLElement).style.background = 'linear-gradient(135deg, #7a1a2e 0%, #951e38 100%)';
                 }}
                 onMouseLeave={(e) => {
-                  e.target.style.background = 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)';
+                  (e.target as HTMLElement).style.background = 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)';
                 }}
               >
                 <Instagram className="w-5 h-5" />
@@ -95,10 +95,10 @@ export function Footer() {
                   background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
                 }}
                 onMouseEnter={(e) => {
-                  e.target.style.background = 'linear-gradient(135deg, #7a1a2e 0%, #951e38 100%)';
+                  (e.target as HTMLElement).style.background = 'linear-gradient(135deg, #7a1a2e 0%, #951e38 100%)';
                 }}
                 onMouseLeave={(e) => {
-                  e.target.style.background = 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)';
+                  (e.target as HTMLElement).style.background = 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)';
                 }}
               >
                 <Facebook className="w-5 h-5" />
@@ -110,10 +110,10 @@ export function Footer() {
                   background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
                 }}
                 onMouseEnter={(e) => {
-                  e.target.style.background = 'linear-gradient(135deg, #7a1a2e 0%, #951e38 100%)';
+                  (e.target as HTMLElement).style.background = 'linear-gradient(135deg, #7a1a2e 0%, #951e38 100%)';
                 }}
                 onMouseLeave={(e) => {
-                  e.target.style.background = 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)';
+                  (e.target as HTMLElement).style.background = 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)';
                 }}
               >
                 <MessageCircle className="w-5 h-5" />
@@ -207,18 +207,7 @@ export function Footer() {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-2xl border border-gray-200 transition-colors duration-200"
-                style={{
-                  focusBorderColor: '#951e38'
-                }}
-                onFocus={(e) => {
-                  e.target.style.borderColor = '#951e38';
-                  e.target.style.outline = '2px solid rgba(149, 30, 56, 0.1)';
-                }}
-                onBlur={(e) => {
-                  e.target.style.borderColor = '#d1d5db';
-                  e.target.style.outline = 'none';
-                }}
+                className="flex-1 px-4 py-3 rounded-2xl border border-gray-200 transition-colors duration-200 focus:border-[#951e38] focus:outline-none focus:ring-2 focus:ring-[#951e38]/10"
               />
               <button 
                 className="text-white px-8 py-3 rounded-2xl font-medium transition-colors duration-200 whitespace-nowrap"

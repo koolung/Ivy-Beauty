@@ -134,14 +134,14 @@ export function Gallery() {
                 }}
                 onMouseEnter={(e) => {
                   if (selectedCategory !== category) {
-                    e.target.style.backgroundColor = 'rgba(149, 30, 56, 0.05)';
-                    e.target.style.color = '#951e38';
+                    (e.target as HTMLElement).style.backgroundColor = 'rgba(149, 30, 56, 0.05)';
+                    (e.target as HTMLElement).style.color = '#951e38';
                   }
                 }}
                 onMouseLeave={(e) => {
                   if (selectedCategory !== category) {
-                    e.target.style.backgroundColor = 'white';
-                    e.target.style.color = '#6b7280';
+                    (e.target as HTMLElement).style.backgroundColor = 'white';
+                    (e.target as HTMLElement).style.color = '#6b7280';
                   }
                 }}
               >
