@@ -25,7 +25,8 @@ export function Navigation() {
       setScrollY(currentScrollY);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    // Use passive listeners for better performance
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 

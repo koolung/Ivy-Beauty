@@ -15,7 +15,8 @@ function useScrollPosition() {
       setScrollY(window.scrollY);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    // Use passive listeners for better performance
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -24,7 +25,6 @@ function useScrollPosition() {
 
 // Background image component with scroll effects
 function ScrollingBackgroundImage() {
-  const scrollY = useScrollPosition();
   const [isMobile, setIsMobile] = useState(false);
   
   useEffect(() => {
@@ -37,12 +37,9 @@ function ScrollingBackgroundImage() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
   
-  // Calculate zoom scale - start with more zoom for closer view
-  const baseScale = 2.2;
-  const scale = baseScale + (scrollY * 0.0003);
-  
-  // Calculate opacity (starts faint at 0.3, increases to 0.8)
-  const opacity = Math.min(0.3 + (scrollY * 0.001), 0.8);
+  // Static values to remove scroll-based animations temporarily
+  const scale = 2.2;
+  const opacity = 0.4;
 
   return (
     <div 

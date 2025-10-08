@@ -40,46 +40,8 @@
     box-sizing: border-box;
   }
   
-  html, body {
-    overflow-x: hidden;
-    width: 100%;
-    max-width: 100vw;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-  
-  #__next, 
-  main {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    max-width: 100vw;
-  }
-
-  /* Prevent horizontal scrolling on mobile */
-  * {
-    box-sizing: border-box;
-  }
-
-  @media (max-width: 768px) {
-    body, html {
-      overflow-x: hidden !important;
-      width: 100% !important;
-      max-width: 100vw !important;
-    }
-    
-    /* Only apply overflow hidden to main layout containers */
-    section {
-      max-width: 100vw;
-    }
-    
-    /* Prevent specific problematic elements from causing overflow */
-    .hero-section,
-    .floating-elements-container,
-    .background-image-container {
-      overflow-x: hidden;
-      max-width: 100vw;
-    }
+  html {
+    scroll-behavior: auto;
   }
   
   body {
@@ -87,16 +49,22 @@
     font-feature-settings: "rlig" 1, "calt" 1;
     margin: 0;
     padding: 0;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
+    overflow-x: hidden;
   }
   
-  body::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+  main {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100vw;
+    min-height: 100vh;
   }
 
-  html {
-    scroll-behavior: smooth;
+  @media (max-width: 768px) {
+    section {
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
   }
 
   /* Custom scrollbar */

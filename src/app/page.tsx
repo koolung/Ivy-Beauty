@@ -9,20 +9,23 @@ import { Contact } from '@/components/sections/Contact';
 import { Navigation } from '@/components/layout/Navigation';
 import { Footer } from '@/components/layout/Footer';
 import { SmoothScroll } from '@/components/effects/SmoothScroll';
+import { MotionConfig } from 'framer-motion';
 
 export default function Home() {
   return (
     <SmoothScroll>
-      <main className="min-h-screen">
-        <Navigation />
-        <Hero />
-        <About />
-        <Services />
-        <Gallery />
-        <Testimonials />
-        <Contact />
-        <Footer />
-      </main>
+      <MotionConfig reducedMotion="always">
+        <main className="min-h-screen">
+          <Navigation />
+          <Hero />
+          <About />
+          <Services />
+          <Gallery />
+          <Testimonials />
+          <Contact />
+          <Footer />
+        </main>
+      </MotionConfig>
     </SmoothScroll>
   );
 }
