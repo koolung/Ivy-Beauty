@@ -126,7 +126,7 @@ export function Navigation() {
               scrolled ? 'text-gray-300' : 'text-gray-600'
             }`}>
               <Phone className="w-4 h-4" />
-              <span>(555) 123-4567</span>
+              <span>Click for Booking</span>
             </div>
             <button className="btn-primary">
               Book Now
@@ -199,7 +199,7 @@ export function Navigation() {
                 >
                   <div className="flex items-center space-x-2 text-sm text-gray-600">
                     <Phone className="w-4 h-4" />
-                    <span>(555) 123-4567</span>
+                    <span>Click for Booking</span>
                   </div>
                   <button className="btn-primary w-full">
                     Book Now

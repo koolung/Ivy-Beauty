@@ -64,7 +64,7 @@ const galleryImages = [
 const categories = ['All', 'Classic', 'Volume', 'Hybrid', 'Lift & Tint', 'Brows'];
 
 export function Gallery() {
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState('Hybrid');
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   const filteredImages = selectedCategory === 'All' 
@@ -206,9 +206,9 @@ export function Gallery() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-center mt-16"
         >
-          <button className="btn-primary">
-            View More on Instagram
-          </button>
+          <a href="https://dikidi.app/1904636" target="_blank" rel="noopener noreferrer" className="btn-primary">
+            Book Appointment
+          </a>
         </motion.div>
       </div>
 

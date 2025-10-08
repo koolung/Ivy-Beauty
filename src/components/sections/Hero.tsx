@@ -180,8 +180,8 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-soft-black mb-6 leading-tight"
         >
-          <span className="block">Transform</span>
-          <span className="block text-gradient">Your Beauty</span>
+          <span className="block">Ivy Beauty</span>
+          <span className="block text-gradient">Lash & SPMU</span>
         </motion.h1>
 
         <motion.p 
@@ -190,8 +190,8 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed"
         >
-          Discover the art of stunning eyelash extensions and premium beauty services 
-          that enhance your natural radiance with expert precision and care.
+          Professional eyelash extensions, brow artistry, and semi-permanent makeup 
+          in our licensed home studio in Timberlea, Nova Scotia. Established 2021.
         </motion.p>
 
         <motion.div 
@@ -200,7 +200,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 1.0 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
         >
-          <button className="btn-primary group">
+          <a href="https://dikidi.app/1904636" target="_blank" rel="noopener noreferrer" className="btn-primary group">
             Book Consultation
             <motion.div 
               className="ml-2 inline-block"
@@ -209,7 +209,7 @@ export function Hero() {
             >
               →
             </motion.div>
-          </button>
+          </a>
           <button className="btn-secondary">
             View Services
           </button>
@@ -230,7 +230,7 @@ export function Hero() {
             <div className="text-gray-600">Years Experience</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl font-bold mb-2" style={{ color: '#951e38' }}>★ 4.9</div>
+            <div className="text-3xl font-bold mb-2" style={{ color: '#951e38' }}>★ 5.0</div>
             <div className="text-gray-600">Average Rating</div>
           </div>
         </motion.div>

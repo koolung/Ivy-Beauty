@@ -6,51 +6,51 @@ import { Eye, Sparkles, Heart, Clock, Star, Users, ChevronLeft, ChevronRight } f
 
 const services = [
   {
+    icon: Heart,
+    title: 'Hybrid Lash Extensions',
+    description: 'Our flagship service! Perfect balance between classic and volume lashes for a soft, full, textured look.',
+    price: '$120',
+    duration: '2 hours 20 minutes',
+    image: '/api/placeholder/400/300'
+  },
+  {
     icon: Eye,
-    title: 'Classic Lash Extensions',
-    description: 'Natural-looking individual lashes for everyday elegance.',
-    price: 'From $120',
-    duration: '2-3 hours',
+    title: 'Classic Full Set',
+    description: 'Natural-looking individual lashes for everyday elegance and sophistication.',
+    price: 'From $100',
+    duration: '2 hours',
     image: '/api/placeholder/400/300'
   },
   {
     icon: Sparkles,
-    title: 'Volume Lash Extensions', 
-    description: 'Fuller, more dramatic lashes with multiple extensions per natural lash.',
-    price: 'From $180',
-    duration: '3-4 hours',
-    image: '/api/placeholder/400/300'
-  },
-  {
-    icon: Heart,
-    title: 'Hybrid Lash Extensions',
-    description: 'Perfect blend of classic and volume for customized fullness.',
-    price: 'From $150',
-    duration: '2.5-3.5 hours', 
+    title: 'Volume Full Set', 
+    description: 'Fuller, more dramatic lashes with multiple extensions per natural lash for maximum impact.',
+    price: '$140',
+    duration: '2 hours 30 minutes',
     image: '/api/placeholder/400/300'
   },
   {
     icon: Star,
     title: 'Lash Lift & Tint',
-    description: 'Enhance your natural lashes with lifting and tinting.',
-    price: 'From $80',
-    duration: '1-1.5 hours',
+    description: 'Enhance and lift your natural lashes with professional curling and rich tinting.',
+    price: '$80',
+    duration: '1 hour 30 minutes',
     image: '/api/placeholder/400/300'
   },
   {
     icon: Users,
-    title: 'Brow Shaping & Tint',
-    description: 'Professional eyebrow shaping and tinting services.',
-    price: 'From $60',
-    duration: '45-60 minutes',
+    title: 'Brow Lamination & Tint',
+    description: 'Professional brow lamination with tinting for fuller, perfectly shaped eyebrows.',
+    price: '$50',
+    duration: '40 minutes',
     image: '/api/placeholder/400/300'
   },
   {
     icon: Clock,
-    title: 'Lash Fill & Maintenance',
-    description: 'Keep your lashes looking perfect with regular touch-ups.',
+    title: 'Fill Services',
+    description: 'Keep your lashes looking perfect with regular maintenance fills every 3 weeks.',
     price: 'From $70',
-    duration: '1-2 hours',
+    duration: '2-2.5 hours',
     image: '/api/placeholder/400/300'
   }
 ];
@@ -140,8 +140,8 @@ export function Services() {
             Our <span className="text-gradient">Services</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Discover our range of premium beauty services designed to enhance your natural beauty
-            with expert techniques and luxury care.
+            Professional eyelash extensions, lash lifts, brow lamination, and semi-permanent makeup 
+            in our fully licensed home studio in Timberlea, Nova Scotia.
           </p>
         </motion.div>
 
@@ -158,66 +158,81 @@ export function Services() {
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 className="group"
               >
-                <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden">
-                  {/* Background Gradient */}
-                  <div 
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
-                    style={{
-                      background: 'linear-gradient(135deg, rgba(149, 30, 56, 0.05) 0%, transparent 100%)'
-                    }}
-                  />
-                  
-                  {/* Icon */}
-                  <div className="relative z-10 mb-6">
-                    <div 
-                      className="w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
-                      style={{
-                        background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
-                      }}
-                    >
-                      <IconComponent className="w-8 h-8 text-white" />
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="relative z-10">
-                    <h3 className="text-2xl font-bold text-soft-black mb-3 group-hover:text-[#951e38] transition-colors duration-300">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-600 mb-4 leading-relaxed">
-                      {service.description}
-                    </p>
+                <div className="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden">
+                  {/* Service Image - Top 45% */}
+                  <div className="relative h-0 pb-[45%] overflow-hidden">
+                    <img 
+                      src="/images/lash.png" 
+                      alt={service.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    {/* Image Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20" />
                     
-                    {/* Details */}
-                    <div className="flex items-center justify-between text-sm text-gray-500 mb-6">
-                      <span className="flex items-center">
-                        <Clock className="w-4 h-4 mr-1" />
-                        {service.duration}
-                      </span>
-                    </div>
-
-                    {/* Price & Book Button */}
-                    <div className="flex items-center justify-between">
-                      <div className="text-2xl font-bold" style={{ color: '#951e38' }}>
-                        {service.price}
-                      </div>
-                      <button 
-                        className="text-white px-6 py-3 rounded-full font-medium transform hover:scale-105 transition-all duration-300 shadow-lg"
+                    {/* Icon on Image */}
+                    <div className="absolute top-4 right-4 z-10">
+                      <div 
+                        className="w-12 h-12 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg"
                         style={{
                           background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
                         }}
                       >
-                        Book Now
-                      </button>
+                        <IconComponent className="w-6 h-6 text-white" />
+                      </div>
                     </div>
                   </div>
 
-                  {/* Decorative Elements */}
-                  <div className="absolute top-4 right-4 opacity-20 group-hover:opacity-40 transition-opacity duration-500">
-                    <Sparkles className="w-6 h-6" style={{ color: 'rgba(149, 30, 56, 0.7)' }} />
+                  {/* Card Content */}
+                  <div className="p-8 relative">
+                    {/* Background Gradient */}
+                    <div 
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
+                      style={{
+                        background: 'linear-gradient(135deg, rgba(149, 30, 56, 0.05) 0%, transparent 100%)'
+                      }}
+                    />
                   </div>
-                </div>
-              </motion.div>
+
+                    {/* Content */}
+                    <div className="relative z-10">
+                      <h3 className="text-2xl font-bold text-soft-black mb-3 group-hover:text-[#951e38] transition-colors duration-300">
+                        {service.title}
+                      </h3>
+                      <p className="text-gray-600 mb-4 leading-relaxed">
+                        {service.description}
+                      </p>
+                      
+                      {/* Details */}
+                      <div className="flex items-center justify-between text-sm text-gray-500 mb-6">
+                        <span className="flex items-center">
+                          <Clock className="w-4 h-4 mr-1" />
+                          {service.duration}
+                        </span>
+                      </div>
+
+                      {/* Price & Book Button */}
+                      <div className="flex items-center justify-between">
+                        <div className="text-2xl font-bold" style={{ color: '#951e38' }}>
+                          {service.price}
+                        </div>
+                        <a 
+                          href="https://dikidi.app/1904636" target="_blank" rel="noopener noreferrer"
+                          className="text-white px-6 py-3 rounded-full font-medium transform hover:scale-105 transition-all duration-300 shadow-lg inline-block text-center"
+                          style={{
+                            background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
+                          }}
+                        >
+                          Book Now
+                        </a>
+                      </div>
+                    </div>
+
+                    {/* Decorative Elements */}
+                    <div className="absolute bottom-4 right-4 opacity-20 group-hover:opacity-40 transition-opacity duration-500">
+                      <Sparkles className="w-6 h-6" style={{ color: 'rgba(149, 30, 56, 0.7)' }} />
+                    </div>
+                  </div>
+                </motion.div>
             );
           })}
         </div>
@@ -257,57 +272,20 @@ export function Services() {
                     }}
                     transition={{ duration: 0.5 }}
                   >
-                    <div className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 mx-2 relative overflow-hidden min-h-[500px] flex flex-col justify-between">
-                      {/* Animated background */}
-                      <motion.div 
-                        className="absolute inset-0"
-                        style={{
-                          background: 'linear-gradient(135deg, rgba(149, 30, 56, 0.08) 0%, transparent 100%)'
-                        }}
-                        animate={{
-                          opacity: currentSlide === index ? 1 : 0
-                        }}
-                        transition={{ duration: 0.8 }}
-                      />
-                      
-                      {/* Floating particles effect (surprise element) */}
-                      {currentSlide === index && (
-                        <>
-                          {[...Array(3)].map((_, i) => {
-                            // Use deterministic positions based on index to avoid hydration issues
-                            const positions = [
-                              { startX: 50, startY: 100, endX: 150, endY: 200 },
-                              { startX: 200, startY: 50, endX: 100, endY: 300 },
-                              { startX: 120, startY: 250, endX: 250, endY: 150 }
-                            ];
-                            const pos = positions[i];
-                            
-                            return (
-                              <motion.div
-                                key={i}
-                                className="absolute w-2 h-2 rounded-full bg-[#951e38]/30"
-                                initial={{ x: pos.startX, y: pos.startY, opacity: 0 }}
-                                animate={{
-                                  x: [pos.startX, pos.endX, pos.startX],
-                                  y: [pos.startY, pos.endY, pos.startY],
-                                  opacity: [0, 1, 0]
-                                }}
-                                transition={{
-                                  duration: 4 + i * 0.5,
-                                  repeat: Infinity,
-                                  delay: i * 0.8,
-                                  ease: "easeInOut"
-                                }}
-                              />
-                            );
-                          })}
-                        </>
-                      )}
-                      
-                      <div className="relative z-10">
-                        {/* Icon with pulse animation */}
+                    <div className="bg-white rounded-3xl shadow-xl border border-gray-100 mx-2 relative overflow-hidden min-h-[500px] flex flex-col">
+                      {/* Service Image - Top 45% */}
+                      <div className="relative h-0 pb-[45%] overflow-hidden">
+                        <img 
+                          src="/images/lash.png" 
+                          alt={service.title}
+                          className="absolute inset-0 w-full h-full object-cover"
+                        />
+                        {/* Image Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20" />
+                        
+                        {/* Icon on Image */}
                         <motion.div 
-                          className="w-24 h-24 rounded-3xl flex items-center justify-center mb-6 mx-auto shadow-lg"
+                          className="absolute top-4 right-4 z-10 w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg"
                           style={{
                             background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
                           }}
@@ -321,8 +299,58 @@ export function Services() {
                             ease: "easeInOut"
                           }}
                         >
-                          <IconComponent className="w-12 h-12 text-white" />
+                          <IconComponent className="w-8 h-8 text-white" />
                         </motion.div>
+                      </div>
+
+                      {/* Card Content */}
+                      <div className="p-8 flex-1 flex flex-col justify-between relative">
+                        {/* Animated background */}
+                        <motion.div 
+                          className="absolute inset-0"
+                          style={{
+                            background: 'linear-gradient(135deg, rgba(149, 30, 56, 0.08) 0%, transparent 100%)'
+                          }}
+                          animate={{
+                            opacity: currentSlide === index ? 1 : 0
+                          }}
+                          transition={{ duration: 0.8 }}
+                        />
+
+                        <div className="relative z-10">
+                        {/* Floating particles effect (surprise element) */}
+                        {currentSlide === index && (
+                          <>
+                            {[...Array(3)].map((_, i) => {
+                              // Use deterministic positions based on index to avoid hydration issues
+                              const positions = [
+                                { startX: 50, startY: 100, endX: 150, endY: 200 },
+                                { startX: 200, startY: 50, endX: 100, endY: 300 },
+                                { startX: 120, startY: 250, endX: 250, endY: 150 }
+                              ];
+                              const pos = positions[i];
+                              
+                              return (
+                                <motion.div
+                                  key={i}
+                                  className="absolute w-2 h-2 rounded-full bg-[#951e38]/30"
+                                  initial={{ x: pos.startX, y: pos.startY, opacity: 0 }}
+                                  animate={{
+                                    x: [pos.startX, pos.endX, pos.startX],
+                                    y: [pos.startY, pos.endY, pos.startY],
+                                    opacity: [0, 1, 0]
+                                  }}
+                                  transition={{
+                                    duration: 4 + i * 0.5,
+                                    repeat: Infinity,
+                                    delay: i * 0.8,
+                                    ease: "easeInOut"
+                                  }}
+                                />
+                              );
+                            })}
+                          </>
+                        )}
                         
                         <motion.h3 
                           className="text-3xl font-bold mb-4 text-center text-gray-800"
@@ -358,8 +386,9 @@ export function Services() {
                           </span>
                         </div>
                         
-                        <motion.button 
-                          className="w-full py-4 text-white rounded-2xl font-semibold text-lg shadow-xl"
+                        <motion.a 
+                          href="https://dikidi.app/1904636" target="_blank" rel="noopener noreferrer"
+                          className="w-full py-4 text-white rounded-2xl font-semibold text-lg shadow-xl inline-block text-center"
                           style={{
                             background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
                           }}
@@ -375,7 +404,8 @@ export function Services() {
                           }}
                         >
                           Book Now
-                        </motion.button>
+                        </motion.a>
+                        </div>
                       </div>
                     </div>
                   </motion.div>
@@ -469,9 +499,9 @@ export function Services() {
               the perfect treatment for your beauty goals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="btn-primary">
+              <a href="https://dikidi.app/1904636" target="_blank" rel="noopener noreferrer" className="btn-primary">
                 Free Consultation
-              </button>
+              </a>
               <button className="btn-secondary">
                 View Portfolio
               </button>

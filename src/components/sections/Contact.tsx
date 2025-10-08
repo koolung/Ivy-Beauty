@@ -195,9 +195,9 @@ export function Contact() {
                   <div>
                     <h4 className="font-semibold text-soft-black mb-1">Address</h4>
                     <p className="text-gray-600">
-                      123 Beauty Lane<br />
-                      Suite 456<br />
-                      Beverly Hills, CA 90210
+                      1937 St. Margaret's Bay Road<br />
+                      Timberlea, NS<br />
+                      B3T 1C3
                     </p>
                   </div>
                 </div>
@@ -213,7 +213,7 @@ export function Contact() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-soft-black mb-1">Phone</h4>
-                    <p className="text-gray-600">(555) 123-4567</p>
+                    <p className="text-gray-600">Contact for booking</p>
                   </div>
                 </div>
 
@@ -228,7 +228,7 @@ export function Contact() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-soft-black mb-1">Email</h4>
-                    <p className="text-gray-600">hello@ivybeauty.com</p>
+                    <p className="text-gray-600">ivy@ivybeautylash.ca</p>
                   </div>
                 </div>
               </div>
@@ -258,7 +258,9 @@ export function Contact() {
               <h3 className="text-2xl font-bold text-soft-black mb-6">Follow Us</h3>
               <div className="flex space-x-4">
                 <a
-                  href="#"
+                  href="https://www.instagram.com/ivybeauty.hfx/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-12 h-12 rounded-2xl flex items-center justify-center text-white transition-colors duration-200"
                   style={{
                     background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'

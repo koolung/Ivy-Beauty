@@ -13,9 +13,9 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Ivy Beauty | Premium Eyelash Extensions & Beauty Services",
-  description: "Transform your look with premium eyelash extensions, brow services, and beauty treatments at Ivy Beauty. Expert technicians, luxury experience.",
-  keywords: "eyelash extensions, lash extensions, beauty salon, brow services, makeup, beauty treatments",
+  title: "Ivy Beauty Lash & SPMU | Licensed Beauty Studio in Timberlea, NS",
+  description: "Professional eyelash extensions, lash lifts, brow lamination & semi-permanent makeup. Licensed home studio in Timberlea, Nova Scotia. Established 2021.",
+  keywords: "eyelash extensions, hybrid lashes, lash lift, brow lamination, semi-permanent makeup, SPMU, Timberlea, Nova Scotia, beauty studio",
   icons: {
     icon: '/images/logo.ico',
   },

@@ -225,9 +225,9 @@ export function Testimonials() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-center mt-16"
         >
-          <button className="btn-primary">
-            Read More Reviews
-          </button>
+          <a href="https://dikidi.app/1904636" target="_blank" rel="noopener noreferrer" className="btn-primary">
+            Book Your Appointment
+          </a>
         </motion.div>
       </div>
     </section>

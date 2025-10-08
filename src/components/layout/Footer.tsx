@@ -20,7 +20,7 @@ const navigation = {
   ],
   support: [
     { name: 'Contact Us', href: '#contact' },
-    { name: 'Book Appointment', href: '#' },
+    { name: 'Book Appointment', href: 'https://dikidi.app/1904636' },
     { name: 'FAQ', href: '#' },
     { name: 'Aftercare Guide', href: '#' },
     { name: 'Cancellation Policy', href: '#' },
@@ -48,33 +48,35 @@ export function Footer() {
             className="lg:col-span-2"
           >
             <div className="text-3xl font-serif font-bold text-gradient mb-4">
-              Ivy Beauty Lash
+              Ivy Beauty Lash & SPMU
             </div>
             <p className="text-gray-600 mb-6 leading-relaxed">
-              Transform your look with premium eyelash extensions and beauty services. 
-              We enhance your natural beauty with expert precision and luxury care.
+              Licensed home-based beauty studio in Timberlea, Nova Scotia. Specializing in 
+              eyelash extensions, lash lifts, brow lamination, and semi-permanent makeup since 2021.
             </p>
             
             {/* Contact Info */}
             <div className="space-y-3 mb-6">
               <div className="flex items-center space-x-3 text-gray-600">
                 <MapPin className="w-5 h-5" style={{ color: '#951e38' }} />
-                <span>123 Beauty Lane, Suite 456, Beverly Hills, CA 90210</span>
+                <span>1937 St. Margaret's Bay Road, Timberlea, NS B3T 1C3</span>
               </div>
               <div className="flex items-center space-x-3 text-gray-600">
                 <Phone className="w-5 h-5" style={{ color: '#951e38' }} />
-                <span>(555) 123-4567</span>
+                <span>Contact for Booking</span>
               </div>
               <div className="flex items-center space-x-3 text-gray-600">
                 <Mail className="w-5 h-5" style={{ color: '#951e38' }} />
-                <span>hello@ivybeauty.com</span>
+                <span>ivy@ivybeautylash.ca</span>
               </div>
             </div>
 
             {/* Social Media */}
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://www.instagram.com/ivybeauty.hfx/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-xl flex items-center justify-center text-white transition-colors duration-200"
                 style={{
                   background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
@@ -179,6 +181,10 @@ export function Footer() {
                   <a
                     href={item.href}
                     className="text-gray-600 hover:text-rose-600 transition-colors duration-200"
+                    {...(item.href.includes('dikidi.app') && {
+                      target: "_blank",
+                      rel: "noopener noreferrer"
+                    })}
                   >
                     {item.name}
                   </a>
@@ -231,7 +237,7 @@ export function Footer() {
         >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-gray-600 text-sm">
-              © 2025 Ivy Beauty Lash. All rights reserved.
+              © 2025 Ivy Beauty Lash & SPMU. All rights reserved.
             </div>
             <div className="flex items-center space-x-6 text-sm">
               <a href="#" className="text-gray-600 hover:text-rose-600 transition-colors duration-200">
@@ -247,7 +253,7 @@ export function Footer() {
             <div className="flex items-center space-x-1 text-gray-600 text-sm">
               <span>Made with</span>
               <Heart className="w-4 h-4 fill-current" style={{ color: '#951e38' }} />
-              <span>by Ivy Beauty Lash Team</span>
+              <span>by Ivy Beauty Lash & SPMU</span>
             </div>
           </div>
         </motion.div>
