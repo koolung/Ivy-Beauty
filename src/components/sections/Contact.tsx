@@ -195,7 +195,7 @@ export function Contact() {
                   <div>
                     <h4 className="font-semibold text-soft-black mb-1">Address</h4>
                     <p className="text-gray-600">
-                      1937 St. Margaret's Bay Road<br />
+                      1937 St. Margarets Bay Road<br />
                       Timberlea, NS<br />
                       B3T 1C3
                     </p>

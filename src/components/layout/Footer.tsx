@@ -59,7 +59,7 @@ export function Footer() {
             <div className="space-y-3 mb-6">
               <div className="flex items-center space-x-3 text-gray-600">
                 <MapPin className="w-5 h-5" style={{ color: '#951e38' }} />
-                <span>1937 St. Margaret's Bay Road, Timberlea, NS B3T 1C3</span>
+                <span>1937 St. Margarets Bay Road, Timberlea, NS B3T 1C3</span>
               </div>
               <div className="flex items-center space-x-3 text-gray-600">
                 <Phone className="w-5 h-5" style={{ color: '#951e38' }} />

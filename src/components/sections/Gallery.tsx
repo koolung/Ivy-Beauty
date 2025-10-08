@@ -170,16 +170,13 @@ export function Gallery() {
               onClick={() => openModal(image.id)}
             >
               <div className="relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
-                <div 
-                  className="aspect-[4/5] relative"
-                  style={{
-                    background: 'linear-gradient(135deg, rgba(149, 30, 56, 0.2) 0%, rgba(149, 30, 56, 0.3) 100%)'
-                  }}
-                >
-                  {/* Placeholder for image */}
-                  <div className="absolute inset-0 flex items-center justify-center text-white font-medium">
-                    {image.alt}
-                  </div>
+                <div className="aspect-[4/5] relative">
+                  {/* Gallery Image */}
+                  <img 
+                    src="/images/lash.png" 
+                    alt={image.alt}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   {/* Category Badge */}
@@ -257,13 +254,14 @@ export function Gallery() {
 
             {/* Image */}
             <div 
-              className="w-full h-full max-w-3xl max-h-[80vh] rounded-2xl flex items-center justify-center text-white font-medium text-xl"
-              style={{
-                background: 'linear-gradient(135deg, rgba(149, 30, 56, 0.2) 0%, rgba(149, 30, 56, 0.3) 100%)'
-              }}
+              className="w-full h-full max-w-3xl max-h-[80vh] rounded-2xl overflow-hidden bg-black/20"
               onClick={(e) => e.stopPropagation()}
             >
-              {filteredImages.find(img => img.id === selectedImage)?.alt}
+              <img 
+                src="/images/lash.png" 
+                alt={filteredImages.find(img => img.id === selectedImage)?.alt}
+                className="w-full h-full object-contain"
+              />
             </div>
           </div>
         </motion.div>
