@@ -48,9 +48,9 @@ export function Navigation() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="flex items-center space-x-2 relative"
+            className="flex items-center justify-start relative"
           >
-            <div className="relative w-52 h-14 overflow-hidden">
+            <div className="relative w-32 h-14 overflow-hidden">
               {/* Light logo - shows initially */}
               <motion.img
                 src="/images/logo/light_rectangle.svg"
