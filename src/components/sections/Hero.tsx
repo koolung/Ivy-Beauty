@@ -45,11 +45,11 @@ function ScrollingBackgroundImage() {
     <div 
       className="background-image-container absolute inset-0 w-full h-screen transition-all duration-300 ease-out"
       style={{
-        backgroundImage: 'url(/images/hero-bg.png)',
+        backgroundImage: 'url(/images/main.png)',
         backgroundSize: isMobile ? 'cover' : 'contain',
         backgroundPosition: 'center top',
         backgroundRepeat: 'no-repeat',
-        transform: `scale(${Math.min(scale, 1.2)})`,
+        transform: `scale(${Math.min(scale, 1)})`,
         opacity: opacity,
         transformOrigin: 'center top',
         top: 0,

@@ -49,19 +49,21 @@ export function About() {
           </motion.div>
 
           {/* Image/Visual */}
-          <motion.div
+            <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
-          >
-            <div 
-              className="aspect-square rounded-3xl shadow-2xl"
-              style={{
-                background: 'linear-gradient(135deg, rgba(149, 30, 56, 0.2) 0%, rgba(149, 30, 56, 0.3) 100%)'
-              }}
-            ></div>
+            >
+            <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl bg-gray-100">
+              <img
+              src="/images/classic.jpg"
+              alt="Classic Lash"
+              className="w-full h-full object-cover"
+              loading="lazy"
+              />
+            </div>
             {/* Floating Elements */}
             <div className="absolute -top-4 -right-4 w-24 h-24 bg-white rounded-2xl shadow-lg flex items-center justify-center floating-animation">
               <Award className="w-12 h-12" style={{ color: '#951e38' }} />
@@ -69,17 +71,17 @@ export function About() {
             <div className="absolute -bottom-4 -left-4 w-20 h-20 bg-white rounded-2xl shadow-lg flex items-center justify-center floating-animation" style={{ animationDelay: '1s' }}>
               <Heart className="w-10 h-10" style={{ color: '#951e38' }} />
             </div>
-          </motion.div>
-        </div>
+            </motion.div>
+          </div>
 
-        {/* Values Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-20"
-        >
+          {/* Values Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-20"
+          >
           <h3 className="text-3xl font-bold text-center text-soft-black mb-12">
             Why Choose Ivy Beauty Lash & SPMU?
           </h3>

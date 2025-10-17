@@ -6,12 +6,28 @@ import { Eye, Sparkles, Heart, Clock, Star, Users, ChevronLeft, ChevronRight } f
 
 const services = [
   {
-    icon: Heart,
-    title: 'Hybrid Lash Extensions',
-    description: 'Our flagship service! Perfect balance between classic and volume lashes for a soft, full, textured look.',
-    price: '$120',
-    duration: '2 hours 20 minutes',
-    image: '/api/placeholder/400/300'
+    icon: Star,
+    title: 'Lash Lift',
+    description: 'Lift and tint your natural lashes for a wide-eyed, low-maintenance look.',
+    price: '$70',
+    duration: '1 hour 10 minutes',
+    image: '/images/lashlift.jpg'
+  },
+  {
+    icon: Sparkles,
+    title: 'Wispy Design',
+    description: 'Light, wispy extensions for a fluttery silhouette.',
+    price: '$10',
+    duration: '10 minutes',
+    image: '/images/wispy.png'
+  },
+  {
+    icon: Eye,
+    title: 'Color Lashes Add-On',
+    description: 'Add a pop of colour to your set with single or mixed colour lash accents.',
+    price: '$10',
+    duration: '10 minutes',
+    image: '/images/color.jpg'
   },
   {
     icon: Eye,
@@ -19,39 +35,39 @@ const services = [
     description: 'Natural-looking individual lashes for everyday elegance and sophistication.',
     price: 'From $100',
     duration: '2 hours',
-    image: '/api/placeholder/400/300'
+    image: '/images/classic.jpg'
   },
   {
-    icon: Sparkles,
-    title: 'Volume Full Set', 
-    description: 'Fuller, more dramatic lashes with multiple extensions per natural lash for maximum impact.',
-    price: '$140',
-    duration: '2 hours 30 minutes',
-    image: '/api/placeholder/400/300'
-  },
-  {
-    icon: Star,
-    title: 'Lash Lift & Tint',
-    description: 'Enhance and lift your natural lashes with professional curling and rich tinting.',
-    price: '$80',
-    duration: '1 hour 30 minutes',
-    image: '/api/placeholder/400/300'
+    icon: Heart,
+    title: 'Hybrid Full Set',
+    description: 'Perfect balance between classic and volume lashes for a soft, full, textured look.',
+    price: '$120',
+    duration: '2 hours 20 minutes',
+    image: '/images/hybrid.jpg'
   },
   {
     icon: Users,
-    title: 'Brow Lamination & Tint',
-    description: 'Professional brow lamination with tinting for fuller, perfectly shaped eyebrows.',
-    price: '$50',
-    duration: '40 minutes',
-    image: '/api/placeholder/400/300'
+    title: '2D Volume Full Set',
+    description: 'Soft, layered volume using 2D fans for a textured, natural fullness.',
+    price: '$120',
+    duration: '2 hours 15 minutes',
+    image: '/images/2d.jpg'
   },
   {
-    icon: Clock,
-    title: 'Fill Services',
-    description: 'Keep your lashes looking perfect with regular maintenance fills every 3 weeks.',
-    price: 'From $70',
-    duration: '2-2.5 hours',
-    image: '/api/placeholder/400/300'
+    icon: Sparkles,
+    title: 'Wet Volume Full Set',
+    description: 'Glossy, separated wet-look volume for a bold and modern finish.',
+    price: '$130',
+    duration: '2 hours 20 minutes',
+    image: '/images/wet.jpg'
+  },
+  {
+    icon: Sparkles,
+    title: 'Volume Full Set',
+    description: 'Maximum fullness using multiple extensions per natural lash for dramatic impact.',
+    price: '$140',
+    duration: '2 hours 30 minutes',
+    image: '/images/volume.jpg'
   }
 ];
 
@@ -162,7 +178,7 @@ export function Services() {
                   {/* Service Image - Top 45% */}
                   <div className="relative h-0 pb-[45%] overflow-hidden">
                     <img 
-                      src="/images/lash.png" 
+                      src={service.image}
                       alt={service.title}
                       className="absolute inset-0 w-full h-full object-cover"
                     />
@@ -170,7 +186,7 @@ export function Services() {
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20" />
                     
                     {/* Icon on Image */}
-                    <div className="absolute top-4 right-4 z-10">
+                    {/* <div className="absolute top-4 right-4 z-10">
                       <div 
                         className="w-12 h-12 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg"
                         style={{
@@ -179,7 +195,7 @@ export function Services() {
                       >
                         <IconComponent className="w-6 h-6 text-white" />
                       </div>
-                    </div>
+                    </div> */}
                   </div>
 
                   {/* Card Content */}
@@ -276,7 +292,7 @@ export function Services() {
                       {/* Service Image - Top 45% */}
                       <div className="relative h-0 pb-[45%] overflow-hidden">
                         <img 
-                          src="/images/lash.png" 
+                          src={service.image}
                           alt={service.title}
                           className="absolute inset-0 w-full h-full object-cover"
                         />
@@ -284,7 +300,7 @@ export function Services() {
                         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20" />
                         
                         {/* Icon on Image */}
-                        <motion.div 
+                        {/* <motion.div 
                           className="absolute top-4 right-4 z-10 w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg"
                           style={{
                             background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
@@ -300,7 +316,7 @@ export function Services() {
                           }}
                         >
                           <IconComponent className="w-8 h-8 text-white" />
-                        </motion.div>
+                        </motion.div> */}
                       </div>
 
                       {/* Card Content */}

@@ -5,66 +5,20 @@ import { useState } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const galleryImages = [
-  {
-    id: 1,
-    src: '/api/placeholder/400/500',
-    alt: 'Classic lash extensions - natural look',
-    category: 'Classic'
-  },
-  {
-    id: 2,
-    src: '/api/placeholder/400/500',
-    alt: 'Volume lash extensions - dramatic look',
-    category: 'Volume'
-  },
-  {
-    id: 3,
-    src: '/api/placeholder/400/500',
-    alt: 'Hybrid lash extensions - balanced look',
-    category: 'Hybrid'
-  },
-  {
-    id: 4,
-    src: '/api/placeholder/400/500',
-    alt: 'Lash lift and tint results',
-    category: 'Lift & Tint'
-  },
-  {
-    id: 5,
-    src: '/api/placeholder/400/500',
-    alt: 'Before and after lash transformation',
-    category: 'Before & After'
-  },
-  {
-    id: 6,
-    src: '/api/placeholder/400/500',
-    alt: 'Eyebrow shaping and tinting',
-    category: 'Brows'
-  },
-  {
-    id: 7,
-    src: '/api/placeholder/400/500',
-    alt: 'Mega volume lash extensions',
-    category: 'Mega Volume'
-  },
-  {
-    id: 8,
-    src: '/api/placeholder/400/500',
-    alt: 'Natural lash enhancement',
-    category: 'Natural'
-  },
-  {
-    id: 9,
-    src: '/api/placeholder/400/500',
-    alt: 'Special occasion lashes',
-    category: 'Special'
-  }
+  { id: 1, src: '/images/lashlift.jpg', alt: 'Lash Lift', category: 'Lash & Brow' },
+  { id: 2, src: '/images/wispy.png', alt: 'Wispy', category: 'Add-on' },
+  { id: 3, src: '/images/color.jpg', alt: 'Color', category: 'Add-on' },
+  { id: 4, src: '/images/classic.jpg', alt: 'Classic', category: 'Full Sets' },
+  { id: 5, src: '/images/hybrid.jpg', alt: 'Hybrid', category: 'Full Sets' },
+  { id: 6, src: '/images/2d.jpg', alt: '2D Volume', category: 'Full Sets' },
+  { id: 7, src: '/images/wet.jpg', alt: 'Wet Volume', category: 'Full Sets' },
+  { id: 8, src: '/images/volume.jpg', alt: 'Volume', category: 'Full Sets' }
 ];
 
-const categories = ['All', 'Classic', 'Volume', 'Hybrid', 'Lift & Tint', 'Brows'];
+const categories = ['All', 'Lash & Brow', 'Full Sets', 'Add-on'];
 
 export function Gallery() {
-  const [selectedCategory, setSelectedCategory] = useState('Hybrid');
+  const [selectedCategory, setSelectedCategory] = useState('Full Sets');
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   const filteredImages = selectedCategory === 'All' 
@@ -173,7 +127,7 @@ export function Gallery() {
                 <div className="aspect-[4/5] relative">
                   {/* Gallery Image */}
                   <img 
-                    src="/images/lash.png" 
+                    src={image.src} 
                     alt={image.alt}
                     className="absolute inset-0 w-full h-full object-cover"
                   />
@@ -258,7 +212,7 @@ export function Gallery() {
               onClick={(e) => e.stopPropagation()}
             >
               <img 
-                src="/images/lash.png" 
+                src={filteredImages.find(img => img.id === selectedImage)?.src}
                 alt={filteredImages.find(img => img.id === selectedImage)?.alt}
                 className="w-full h-full object-contain"
               />
