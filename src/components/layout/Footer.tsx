@@ -67,7 +67,7 @@ export function Footer() {
               </div>
               <div className="flex items-center space-x-3 text-gray-600">
                 <Mail className="w-5 h-5" style={{ color: '#951e38' }} />
-                <span>ivy@ivybeautylash.ca</span>
+                <span>ivy@ivybeautylashnpmu.ca</span>
               </div>
             </div>
 

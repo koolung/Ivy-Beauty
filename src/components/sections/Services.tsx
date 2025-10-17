@@ -33,7 +33,13 @@ const services = [
     icon: Eye,
     title: 'Classic Full Set',
     description: 'Natural-looking individual lashes for everyday elegance and sophistication.',
-    price: 'From $100',
+    // Make the "From" text smaller by using a JSX fragment with a smaller span
+    price: (
+      <div className="flex flex-col items-end">
+        <span className="text-sm text-gray-500">From</span>
+        <span>$100</span>
+      </div>
+    ),
     duration: '2 hours',
     image: '/images/classic.jpg'
   },

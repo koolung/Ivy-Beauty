@@ -7,50 +7,50 @@ import { useState, useEffect } from 'react';
 const testimonials = [
   {
     id: 1,
-    name: 'Sarah Johnson',
+    name: 'kristine efenio',
     service: 'Volume Lash Extensions',
     rating: 5,
-    text: 'Absolutely incredible experience! The team at Ivy Beauty Lash transformed my lashes completely. I wake up every morning feeling gorgeous and confident. The attention to detail and professionalism is unmatched.',
+    text: 'Ivy is the best ✨ she REALLY understands my eye shape. She is so sweet, she is super accommodating, and she makes me feel beautiful everytime. She really cares about making sure you feel comfortable and making sure your lashes stay healthy.',
     image: '/api/placeholder/100/100'
   },
   {
     id: 2,
-    name: 'Emily Chen',
+    name: 'Kallista N',
     service: 'Classic Lash Extensions',
     rating: 5,
-    text: 'I have been coming to Ivy Beauty Lash for over two years now, and they never disappoint. The lashes look so natural and last for weeks. The staff is incredibly skilled and makes you feel so comfortable.',
+    text: 'Hands down the best lash tech! Ivy’s attention to detail, professionalism, and expertise is unmatched. Ivy has been doing my lashes for over a year and I have never left an appointment disappointed.',
     image: '/api/placeholder/100/100'
   },
   {
     id: 3,
-    name: 'Jessica Martinez',
+    name: 'Jeizza',
     service: 'Hybrid Lash Extensions',
     rating: 5,
-    text: 'Best lash salon in the city! The hybrid lashes gave me the perfect balance of natural and dramatic. I get so many compliments and the retention is amazing. Highly recommend!',
+    text: 'We had a wonderful experience at Ivy Beauty Lashes! Ivy is incredibly accommodating, kind, and patient, especially with first-time clients. She took the time to explain everything thoroughly and made sure we felt comfortable throughout the process.',
     image: '/api/placeholder/100/100'
   },
   {
     id: 4,
-    name: 'Amanda Thompson',
+    name: 'Ellie-Aphelia',
     service: 'Lash Lift & Tint',
     rating: 5,
-    text: 'The lash lift and tint was exactly what I needed for a more natural look. The results exceeded my expectations and the process was so relaxing. Will definitely be back!',
+    text: 'So, I have had lashes extensions for a decade, and traveling the country (extensively) has resulted in experience with at least a dozen techs, and I can say wholeheartedly that Ivy is the ABSOLUTE BEST!!!',
     image: '/api/placeholder/100/100'
   },
   {
     id: 5,
-    name: 'Rachel Davis',
+    name: 'Lucia Duarte Baron',
     service: 'Brow Shaping',
     rating: 5,
-    text: 'Perfect brows every time! The attention to detail and the way they shape my brows to complement my face is incredible. I trust them completely with my beauty routine.',
+    text: 'I highly recommended visiting IVY BEAUTY. The location is very convenient, parking is available and the place is super clean, nice and neat.',
     image: '/api/placeholder/100/100'
   },
   {
     id: 6,
-    name: 'Lisa Wilson',
+    name: 'Erica Goodwin',
     service: 'Mega Volume Lashes',
     rating: 5,
-    text: 'Stunning results! The mega volume lashes made me feel like a Hollywood star. The quality is outstanding and the lashes are so comfortable I forget I&apos;m wearing them.',
+    text: 'Absolutely recommend Ivy Beauty, she is fantastic! I have been seeing her for a few years now and am so happy with her work! The salon is clean and very inviting! A true spa feeling!!',
     image: '/api/placeholder/100/100'
   }
 ];
@@ -200,12 +200,12 @@ export function Testimonials() {
           className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-16 max-w-4xl mx-auto"
         >
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: '#951e38' }}>4.9★</div>
+            <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: '#951e38' }}>5.0★</div>
             <div className="text-gray-600">Average Rating</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: '#951e38' }}>500+</div>
-            <div className="text-gray-600">5-Star Reviews</div>
+            <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: '#951e38' }}>10+</div>
+            <div className="text-gray-600">Years of Experience</div>
           </div>
           <div className="text-center">
             <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: '#951e38' }}>98%</div>

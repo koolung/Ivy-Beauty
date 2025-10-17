@@ -280,6 +280,9 @@ export function Contact() {
                 <a
                   href="#"
                   className="w-12 h-12 bg-gradient-to-br from-rose-400 to-rose-500 rounded-2xl flex items-center justify-center text-white hover:from-rose-500 hover:to-rose-600 transition-colors duration-200"
+                  style={{
+                    background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
+                  }}
                 >
                   <MessageCircle className="w-6 h-6" />
                 </a>
