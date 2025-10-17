@@ -35,7 +35,7 @@ export function About() {
             <div className="grid grid-cols-2 gap-6 mb-8">
               <div className="text-center">
                 <div className="text-3xl font-bold mb-2" style={{ color: '#951e38' }}>4+</div>
-                <div className="text-gray-600">Years Experience</div>
+                <div className="text-gray-600">Years of Operation</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold mb-2" style={{ color: '#951e38' }}>Licensed</div>
