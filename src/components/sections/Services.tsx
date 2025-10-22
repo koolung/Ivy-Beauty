@@ -7,15 +7,15 @@ import { Eye, Sparkles, Heart, Clock, Star, Users, ChevronLeft, ChevronRight } f
 const services = [
   {
     icon: Star,
-    title: 'Lash Lift',
+    title: 'Lift Tint Combo',
     description: 'Lift and tint your natural lashes for a wide-eyed, low-maintenance look.',
-    price: '$70',
-    duration: '1 hour 10 minutes',
+    price: '$80',
+    duration: '1 hour 30 minutes',
     image: '/images/lashlift.jpg'
   },
   {
     icon: Sparkles,
-    title: 'Wispy Design',
+    title: 'Wispy Style Add-On',
     description: 'Light, wispy extensions for a fluttery silhouette.',
     price: '$10',
     duration: '10 minutes',
