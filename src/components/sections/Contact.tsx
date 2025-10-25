@@ -65,7 +65,7 @@ export function Contact() {
             transition={{ duration: 0.8 }}
             className="glass-card"
           >
-            <h3 className="text-2xl font-bold text-soft-black mb-6">Book Your Appointment</h3>
+            <h3 className="text-2xl font-bold text-soft-black mb-6">Contact Us</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
@@ -142,7 +142,7 @@ export function Contact() {
                     <option value="hybrid">Hybrid Lash Extensions</option>
                     <option value="lift-tint">Lash Lift & Tint</option>
                     <option value="brows">Brow Services</option>
-                    <option value="consultation">Free Consultation</option>
+                    <option value="consultation">Consultation</option>
                   </select>
                 </div>
               </div>
@@ -239,17 +239,10 @@ export function Contact() {
               <h3 className="text-2xl font-bold text-soft-black mb-6">Business Hours</h3>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Monday - Friday</span>
-                  <span className="font-medium text-soft-black">9:00 AM - 7:00 PM</span>
+                  <span className="text-gray-600">Monday - Saturday</span>
+                  <span className="font-medium text-soft-black">9:00 AM - 6:30 PM</span>
                 </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Saturday</span>
-                  <span className="font-medium text-soft-black">9:00 AM - 6:00 PM</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Sunday</span>
-                  <span className="font-medium text-soft-black">10:00 AM - 5:00 PM</span>
-                </div>
+
               </div>
             </div>
 
