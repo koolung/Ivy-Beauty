@@ -201,7 +201,7 @@ export function Hero() {
           className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
         >
           <a href="https://dikidi.app/1904636" target="_blank" rel="noopener noreferrer" className="btn-primary group">
-            Book Consultation
+            Book Appointment
             <motion.div 
               className="ml-2 inline-block"
               animate={{ x: [0, 5, 0] }}

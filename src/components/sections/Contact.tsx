@@ -2,10 +2,18 @@
 
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Instagram, Facebook, MessageCircle } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+type FormData = {
+  name: string;
+  email: string;
+  phone: string;
+  service: string;
+  message: string;
+};
 
 export function Contact() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     phone: '',
@@ -13,18 +21,63 @@ export function Contact() {
     message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
+  const [recaptchaReady, setRecaptchaReady] = useState(false);
+
+  // Load reCAPTCHA script
+  useEffect(() => {
+    const key = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6Ldx5PcrAAAAAN1ZAGtgw_hPgT3mDSNRoZ9b3TUM';
+    if (!window.document.querySelector(`#recaptcha-script`)) {
+      const script = document.createElement('script');
+      script.id = 'recaptcha-script';
+      script.src = `https://www.google.com/recaptcha/api.js?render=${key}`;
+      script.async = true;
+      script.onload = () => setRecaptchaReady(true);
+      document.body.appendChild(script);
+    } else {
+      setRecaptchaReady(true);
+    }
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      service: '',
-      message: ''
-    });
+    setStatus('loading');
+    setStatusMessage(null);
+
+    try {
+      const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6Ldx5PcrAAAAAN1ZAGtgw_hPgT3mDSNRoZ9b3TUM';
+
+      // @ts-ignore - grecaptcha injected by external script
+      const grecaptcha = (window as any).grecaptcha;
+      if (!grecaptcha || !grecaptcha.execute) {
+        setStatus('error');
+        setStatusMessage('reCAPTCHA not ready. Please try again shortly.');
+        return;
+      }
+
+      const token = await grecaptcha.execute(siteKey, { action: 'contact' });
+
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, token }),
+      });
+
+      const json = await res.json();
+      if (res.ok && json.ok) {
+        setStatus('success');
+        setStatusMessage('Message sent — we will be in touch shortly.');
+        setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+      } else {
+        setStatus('error');
+        setStatusMessage(json.error || 'Failed to send message');
+      }
+    } catch (err) {
+      console.error(err);
+      setStatus('error');
+      setStatusMessage('Server error — please try again later.');
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -162,11 +215,30 @@ export function Contact() {
                 />
               </div>
 
+              {statusMessage && (
+                <div className={`p-4 rounded-2xl ${
+                  status === 'success' ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'
+                }`}>
+                  {statusMessage}
+                </div>
+              )}
+              
               <button
                 type="submit"
-                className="w-full btn-primary"
+                disabled={!recaptchaReady || status === 'loading'}
+                className={`w-full btn-primary ${
+                  !recaptchaReady || status === 'loading' ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
               >
-                Send Message
+                {status === 'loading' ? (
+                  <span className="flex items-center justify-center">
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Sending...
+                  </span>
+                ) : 'Send Message'}
               </button>
             </form>
           </motion.div>
@@ -228,7 +300,7 @@ export function Contact() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-soft-black mb-1">Email</h4>
-                    <p className="text-gray-600">ivy@ivybeautylash.ca</p>
+                    <p className="text-gray-600">contact@ivybeautylashnpmu.ca</p>
                   </div>
                 </div>
               </div>
