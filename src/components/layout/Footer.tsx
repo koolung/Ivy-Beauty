@@ -297,7 +297,7 @@ export function Footer() {
 
           <p className="text-gray-700 mb-4">There will be a 15 minutes grace period before you will be charged a $10 late fee.</p>
 
-          <p className="text-gray-700 mb-4">Clients who give less than 24 hours notice of any cancellations will be required to pay a $30 nonrefundable deposit for the next appointment; this deposit will be forfeited in the case of the client cancellation within 24 hours or a no-show prior to appointment.</p>
+          <p className="text-gray-700 mb-4">Cancellation Policy — If you cancel or do not show up without giving at least 24 hours’ notice, a $30 cancellation fee will be required before booking your next appointment.</p>
 
           <p className="text-gray-700 mb-4">If multiple late cancellations occur, we reserve the right to refuse service.</p>
 

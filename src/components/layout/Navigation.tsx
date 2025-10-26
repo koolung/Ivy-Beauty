@@ -125,12 +125,15 @@ export function Navigation() {
             <div className={`flex items-center space-x-2 text-sm transition-colors duration-300 ${
               scrolled ? 'text-gray-300' : 'text-gray-600'
             }`}>
-              <Phone className="w-4 h-4" />
-              <span>Click for Booking</span>
             </div>
-            <button className="btn-primary">
+            <a
+              href="https://dikidi.app/1904636"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+            >
               Book Now
-            </button>
+            </a>
           </motion.div>
 
           {/* Mobile menu button */}
@@ -201,9 +204,14 @@ export function Navigation() {
                     <Phone className="w-4 h-4" />
                     <span>Click for Booking</span>
                   </div>
-                  <button className="btn-primary w-full">
+                  <a
+                    href="https://dikidi.app/1904636"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary w-full inline-block text-center"
+                  >
                     Book Now
-                  </button>
+                  </a>
                 </motion.div>
               </div>
             </motion.div>
