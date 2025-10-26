@@ -4,6 +4,15 @@ import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Instagram, Facebook, MessageCircle } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
+interface ReCaptchaV3 {
+  ready: () => Promise<void>;
+  execute: (siteKey: string, options: { action: string }) => Promise<string>;
+}
+
+interface Window {
+  grecaptcha?: ReCaptchaV3;
+}
+
 type FormData = {
   name: string;
   email: string;
@@ -48,9 +57,8 @@ export function Contact() {
     try {
       const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '6Ldx5PcrAAAAAN1ZAGtgw_hPgT3mDSNRoZ9b3TUM';
 
-      // @ts-ignore - grecaptcha injected by external script
-      const grecaptcha = (window as any).grecaptcha;
-      if (!grecaptcha || !grecaptcha.execute) {
+      const grecaptcha = (window as Window).grecaptcha;
+      if (!grecaptcha?.execute) {
         setStatus('error');
         setStatusMessage('reCAPTCHA not ready. Please try again shortly.');
         return;
