@@ -69,7 +69,7 @@ export function Contact() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, token }),
+        body: JSON.stringify({ ...formData, recaptchaToken: token }),
       });
 
       const json = await res.json();
