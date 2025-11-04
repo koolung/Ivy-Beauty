@@ -302,7 +302,7 @@ export function Contact() {
                       >
                         <span className="flex items-start">
                           <MessageCircle className="w-3 h-3 mr-1.5 mt-0.5 flex-shrink-0" style={{ color: '#951e38' }} />
-                          <span>We may be unable to answer calls while assisting other clients, so please leave us a message and we'll get back to you as soon as possible</span>
+                          <span>We may be unable to answer calls while assisting other clients, so please leave us a message and we&apos;ll get back to you as soon as possible</span>
                         </span>
                       </div>
                     </div>
