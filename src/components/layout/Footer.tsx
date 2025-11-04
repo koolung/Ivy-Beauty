@@ -6,11 +6,12 @@ import { MapPin, Phone, Mail, Instagram, Facebook, MessageCircle, Heart, X } fro
 
 const navigation = {
   services: [
-    { name: 'Classic Lash Extensions', href: '#' },
-    { name: 'Volume Lash Extensions', href: '#' },
-    { name: 'Hybrid Lash Extensions', href: '#' },
-    { name: 'Lash Lift & Tint', href: '#' },
-    { name: 'Brow Services', href: '#' },
+    { name: 'Classic Lash Extensions', href: '#services' },
+    { name: 'Volume Lash Extensions', href: '#services' },
+    { name: 'Hybrid Lash Extensions', href: '#services' },
+    { name: 'Lash Lift & Tint', href: '#services' },
+    { name: 'Permanent Makeup', href: '#services' },
+    { name: 'Others', href: '#services' },
   ],
   company: [
     { name: 'About Us', href: '#about' },
@@ -67,7 +68,7 @@ export function Footer() {
             className="lg:col-span-2"
           >
             <div className="text-3xl font-serif font-bold text-gradient mb-4">
-              Ivy Beauty Lash & SPMU
+              Ivy Beauty Lash & PMU
             </div>
             <p className="text-gray-600 mb-6 leading-relaxed">
               Licensed home-based beauty studio in Timberlea, Nova Scotia. Specializing in 
@@ -82,11 +83,9 @@ export function Footer() {
               </div>
               <div className="flex items-center space-x-3 text-gray-600">
                 <Phone className="w-5 h-5" style={{ color: '#951e38' }} />
-                <span>Contact for Booking</span>
-              </div>
-              <div className="flex items-center space-x-3 text-gray-600">
-                <Mail className="w-5 h-5" style={{ color: '#951e38' }} />
-                <span>ivy@ivybeautylashnpmu.ca</span>
+                <a href="tel:+19027898107" className="hover:text-[#951e38] transition-colors duration-200">
+                  +1 (902) 789-8107
+                </a>
               </div>
             </div>
 
@@ -110,7 +109,7 @@ export function Footer() {
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.facebook.com/people/Ivybeautybykim/100075805848444/"
                 className="w-10 h-10 rounded-xl flex items-center justify-center text-white transition-colors duration-200"
                 style={{
                   background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
@@ -123,21 +122,6 @@ export function Footer() {
                 }}
               >
                 <Facebook className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-xl flex items-center justify-center text-white transition-colors duration-200"
-                style={{
-                  background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
-                }}
-                onMouseEnter={(e) => {
-                  (e.target as HTMLElement).style.background = 'linear-gradient(135deg, #7a1a2e 0%, #951e38 100%)';
-                }}
-                onMouseLeave={(e) => {
-                  (e.target as HTMLElement).style.background = 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)';
-                }}
-              >
-                <MessageCircle className="w-5 h-5" />
               </a>
             </div>
           </motion.div>

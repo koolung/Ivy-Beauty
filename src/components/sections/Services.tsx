@@ -521,12 +521,12 @@ export function Services() {
               the perfect treatment for your beauty goals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://dikidi.app/1904636" target="_blank" rel="noopener noreferrer" className="btn-primary">
+              <a href="#contact" rel="noopener noreferrer" className="btn-primary">
                 Free Consultation
               </a>
-              <button className="btn-secondary">
+              <a href="#gallery" className="btn-secondary">
                 View Portfolio
-              </button>
+              </a>
             </div>
           </div>
         </motion.div>

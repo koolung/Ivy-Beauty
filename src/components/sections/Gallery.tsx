@@ -2,23 +2,28 @@
 
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 
 const galleryImages = [
-  { id: 1, src: '/images/lashlift.jpg', alt: 'Lash Lift', category: 'Lash & Brow' },
-  { id: 2, src: '/images/wispy.png', alt: 'Wispy', category: 'Add-on' },
-  { id: 3, src: '/images/color.jpg', alt: 'Color', category: 'Add-on' },
-  { id: 4, src: '/images/classic.jpg', alt: 'Classic', category: 'Full Sets' },
-  { id: 5, src: '/images/hybrid.jpg', alt: 'Hybrid', category: 'Full Sets' },
-  { id: 6, src: '/images/2d.jpg', alt: '2D Volume', category: 'Full Sets' },
-  { id: 7, src: '/images/wet.jpg', alt: 'Wet Volume', category: 'Full Sets' },
-  { id: 8, src: '/images/volume.jpg', alt: 'Volume', category: 'Full Sets' }
+  { id: 1, src: '/images/wispy.png', alt: 'Wispy', category: 'Lash Extensions' },
+  { id: 2, src: '/images/color.jpg', alt: 'Color', category: 'Lash Extensions' },
+  { id: 3, src: '/images/classic.jpg', alt: 'Classic', category: 'Lash Extensions' },
+  { id: 4, src: '/images/hybrid.jpg', alt: 'Hybrid', category: 'Lash Extensions' },
+  { id: 5, src: '/images/2d.jpg', alt: '2D Volume', category: 'Lash Extensions' },
+  { id: 6, src: '/images/wet.jpg', alt: 'Wet Volume', category: 'Lash Extensions' },
+  { id: 7, src: '/images/volume.jpg', alt: 'Volume', category: 'Lash Extensions' },
+  { id: 8, src: '/images/lashlift.jpg', alt: 'Lash Lift & Tint', category: 'Lash Lift & Tint' },
+  { id: 9, src: '/images/lashlift1.jpg', alt: 'Lash Lift & Tint', category: 'Lash Lift & Tint' },
+  { id: 10, src: '/images/lashlift2.jpg', alt: 'Lash Lift & Tint', category: 'Lash Lift & Tint' },
+  { id: 11, src: '/images/lashlift3.jpg', alt: 'Lash Lift & Tint', category: 'Lash Lift & Tint' },
+  { id: 12, src: '/images/lashlift4.jpg', alt: 'Lash Lift & Tint', category: 'Lash Lift & Tint' },
+  { id: 13, src: '/images/lashlift5.jpg', alt: 'Lash Lift & Tint', category: 'Lash Lift & Tint' }
 ];
 
-const categories = ['All', 'Lash & Brow', 'Full Sets', 'Add-on'];
+const categories = ['All', 'Lash Extensions', 'Lash Lift & Tint', 'PMU', 'Others'];
 
 export function Gallery() {
-  const [selectedCategory, setSelectedCategory] = useState('Full Sets');
+  const [selectedCategory, setSelectedCategory] = useState('Lash Extensions');
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   const filteredImages = selectedCategory === 'All' 
@@ -136,6 +141,10 @@ export function Gallery() {
                   {/* Category Badge */}
                   <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-medium text-gray-700">
                     {image.alt}
+                  </div>
+                  {/* Full Screen Icon - Bottom Right - Always Visible */}
+                  <div className="absolute bottom-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg transition-all duration-300 group-hover:scale-110">
+                    <Maximize2 className="w-5 h-5" style={{ color: '#951e38' }} />
                   </div>
                   {/* View Button */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">

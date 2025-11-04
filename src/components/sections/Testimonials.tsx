@@ -204,7 +204,7 @@ export function Testimonials() {
             <div className="text-gray-600">Average Rating</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: '#951e38' }}>10+</div>
+            <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: '#951e38' }}>4+</div>
             <div className="text-gray-600">Years of Experience</div>
           </div>
           <div className="text-center">
@@ -212,7 +212,7 @@ export function Testimonials() {
             <div className="text-gray-600">Client Retention</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: '#951e38' }}>5000+</div>
+            <div className="text-3xl md:text-4xl font-bold mb-2" style={{ color: '#951e38' }}>2000+</div>
             <div className="text-gray-600">Happy Clients</div>
           </div>
         </motion.div>

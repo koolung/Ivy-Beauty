@@ -291,26 +291,24 @@ export function Contact() {
                   >
                     <Phone className="w-6 h-6 text-white" />
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <h4 className="font-semibold text-soft-black mb-1">Phone</h4>
-                    <p className="text-gray-600">Contact for booking</p>
+                    <a href="tel:+19027898107" className="text-gray-600 hover:text-[#951e38] transition-colors duration-200 block mb-2">
+                      +1 (902) 789-8107
+                    </a>
+                    <div className="relative">
+                      <div 
+                        className="text-xs text-gray-500 italic bg-gradient-to-r from-[#951e38]/5 to-transparent p-2 rounded-lg border-l-2 border-[#951e38]/30"
+                      >
+                        <span className="flex items-start">
+                          <MessageCircle className="w-3 h-3 mr-1.5 mt-0.5 flex-shrink-0" style={{ color: '#951e38' }} />
+                          <span>We may be unable to answer calls while assisting other clients, so please leave us a message and we'll get back to you as soon as possible</span>
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
-                  <div 
-                    className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0"
-                    style={{
-                      background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
-                    }}
-                  >
-                    <Mail className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-soft-black mb-1">Email</h4>
-                    <p className="text-gray-600">contact@ivybeautylashnpmu.ca</p>
-                  </div>
-                </div>
               </div>
             </div>
 
@@ -342,22 +340,13 @@ export function Contact() {
                   <Instagram className="w-6 h-6" />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.facebook.com/people/Ivybeautybykim/100075805848444/"
                   className="w-12 h-12 rounded-2xl flex items-center justify-center text-white transition-colors duration-200"
                   style={{
                     background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
                   }}
                 >
                   <Facebook className="w-6 h-6" />
-                </a>
-                <a
-                  href="#"
-                  className="w-12 h-12 bg-gradient-to-br from-rose-400 to-rose-500 rounded-2xl flex items-center justify-center text-white hover:from-rose-500 hover:to-rose-600 transition-colors duration-200"
-                  style={{
-                    background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
-                  }}
-                >
-                  <MessageCircle className="w-6 h-6" />
                 </a>
               </div>
             </div>
