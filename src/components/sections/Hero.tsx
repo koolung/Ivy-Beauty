@@ -181,7 +181,7 @@ export function Hero() {
           className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-soft-black mb-6 leading-tight"
         >
           <span className="block">Ivy Beauty</span>
-          <span className="block text-gradient">Lash & SPMU</span>
+          <span className="block text-gradient">Lash & PMU</span>
         </motion.h1>
 
         <motion.p 

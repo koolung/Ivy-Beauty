@@ -18,10 +18,10 @@ export function About() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-soft-black mb-6">
-              About <span className="text-gradient">Ivy Beauty Lash & SPMU</span>
+              About <span className="text-gradient">Ivy Beauty Lash & PMU</span>
             </h2>
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              Established in 2021, Ivy Beauty Lash & SPMU is a fully licensed home-based beauty 
+              Established in 2021, Ivy Beauty Lash & PMU is a fully licensed home-based beauty 
               studio located in Timberlea, Nova Scotia. Specializing in professional eyelash 
               extensions, lash lifts, brow lamination, and semi-permanent makeup for brows and lips.
             </p>
@@ -83,7 +83,7 @@ export function About() {
             className="mt-20"
           >
           <h3 className="text-3xl font-bold text-center text-soft-black mb-12">
-            Why Choose Ivy Beauty Lash & SPMU?
+            Why Choose Ivy Beauty Lash & PMU?
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center p-6">

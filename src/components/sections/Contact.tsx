@@ -309,6 +309,23 @@ export function Contact() {
                   </div>
                 </div>
 
+                <div className="flex items-start space-x-4">
+                  <div 
+                    className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0"
+                    style={{
+                      background: 'linear-gradient(135deg, #951e38 0%, #b22a47 100%)'
+                    }}
+                  >
+                    <Mail className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-semibold text-soft-black mb-1">Email</h4>
+                    <a href="mailto:ivybeautysa@gmail.com" className="text-gray-600 hover:text-[#951e38] transition-colors duration-200 block mb-2">
+                      ivybeautysa@gmail.com
+                    </a>
+                  </div>
+                </div>
+
               </div>
             </div>
 

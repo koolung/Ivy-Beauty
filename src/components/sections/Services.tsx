@@ -216,7 +216,7 @@ export function Services() {
                   </div>
 
                     {/* Content */}
-                    <div className="relative z-10">
+                    <div className="relative z-10 p-5">
                       <h3 className="text-2xl font-bold text-soft-black mb-3 group-hover:text-[#951e38] transition-colors duration-300">
                         {service.title}
                       </h3>
