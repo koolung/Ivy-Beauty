@@ -202,7 +202,8 @@ export function Contact() {
                     <option value="volume">Volume Lash Extensions</option>
                     <option value="hybrid">Hybrid Lash Extensions</option>
                     <option value="lift-tint">Lash Lift & Tint</option>
-                    <option value="brows">Brow Services</option>
+                    <option value="pmu">Permanent Make up</option>
+                    <option value="others">Others</option>
                     <option value="consultation">Consultation</option>
                   </select>
                 </div>

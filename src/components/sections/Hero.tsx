@@ -210,9 +210,9 @@ export function Hero() {
               →
             </motion.div>
           </a>
-          <button className="btn-secondary">
+          <a href="#services" className="btn-secondary">
             View Services
-          </button>
+          </a>
         </motion.div>
 
         <motion.div 
